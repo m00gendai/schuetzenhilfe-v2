@@ -2,5 +2,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 1/1;
-    background: green;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
