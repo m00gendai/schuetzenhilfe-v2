@@ -1,6 +1,7 @@
 import s from "../styles/Modal_Options.module.css";
 
 import { weaponList } from "../weaponList.tsx";
+import { targetList } from "../targetList.tsx";
 
 interface Weapon {
   designation: string;
@@ -9,11 +10,20 @@ interface Weapon {
   base: number;
 }
 
+interface Target {
+  designation: string;
+  name: string;
+  distance: integer;
+  type: string;
+}
+
 interface modalProps {
   showOptions: boolean;
   setShowOptions(): boolean;
   weapon: Weapon;
   setWeapon(): Weapon;
+  target: Target;
+  setTarget(): Target;
 }
 
 export default function Modal_Options({
@@ -21,11 +31,20 @@ export default function Modal_Options({
   setShowOptions,
   weapon,
   setWeapon,
+  target,
+  setTarget,
 }: modalProps) {
   function assignWeapon(event) {
     for (let weapon of weaponList) {
       if (weapon.designation === event.currentTarget.value) {
         setWeapon(weapon);
+      }
+    }
+  }
+  function assignTarget(event) {
+    for (let target of targetList) {
+      if (target.designation === event.currentTarget.value) {
+        setTarget(target);
       }
     }
   }
@@ -48,6 +67,19 @@ export default function Modal_Options({
               return (
                 <option key={weapon.designation} value={weapon.designation}>
                   {weapon.designation}
+                </option>
+              );
+            })}
+          </select>
+          <select
+            name="targets"
+            id="select_targets"
+            onChange={(event: any) => assignTarget(event)}
+          >
+            {targetList.map((target) => {
+              return (
+                <option key={target.designation} value={target.designation}>
+                  {target.name}
                 </option>
               );
             })}

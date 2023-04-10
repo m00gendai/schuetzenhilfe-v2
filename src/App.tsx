@@ -70,6 +70,8 @@ function App() {
           setShowOptions={setShowOptions}
           weapon={weapon}
           setWeapon={setWeapon}
+          target={target}
+          setTarget={setTarget}
         />
       ) : null}
     </main>
