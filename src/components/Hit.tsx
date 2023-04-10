@@ -9,7 +9,7 @@ interface hitProps {
 export default function Hit({ score, y, x }: hitProps) {
   return (
     <div className={s.container} style={{ top: `${y}px`, left: `${x}px` }}>
-      {score < 0 ? "0" : score}
+      {score < 0 ? "0" : Math.ceil(score / 10)}
     </div>
   );
 }
