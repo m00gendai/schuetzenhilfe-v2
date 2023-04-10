@@ -68,6 +68,8 @@ function App() {
         <Modal_Options
           showOptions={showOptions}
           setShowOptions={setShowOptions}
+          weapon={weapon}
+          setWeapon={setWeapon}
         />
       ) : null}
     </main>

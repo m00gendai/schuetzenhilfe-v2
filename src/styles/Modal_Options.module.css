@@ -14,10 +14,28 @@
     width: 90vw;
     height: 95vh;
     background: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .close{
     position: absolute;
     top: 0;
     right: 0;
+    border: 0;
+    outline: none;
+    background: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 2rem;
+    aspect-ratio: 1/1;
+}
+
+.content{
+    width: 90%;
+    margin: 3rem 0 0 0;
 }
