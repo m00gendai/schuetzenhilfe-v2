@@ -25,7 +25,7 @@ function App() {
         cursorPosition={cursorPosition}
         setCursorPosition={setCursorPosition}
       />
-      <Screen />
+      <Screen hit={calculatedHitPosition} />
       <Controller />
     </main>
   );
