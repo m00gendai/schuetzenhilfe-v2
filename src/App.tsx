@@ -1,6 +1,7 @@
 import Target from "./components/Target.tsx";
 import Screen from "./components/Screen.tsx";
 import Controller from "./components/Controller.tsx";
+import Modal_Options from "./components/Modal_Options.tsx";
 
 import { useState } from "react";
 
@@ -40,6 +41,7 @@ function App() {
   const [cursorPosition, setCursorPosition] = useState<number[]>([]);
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([]);
   const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>();
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
   return (
     <main>
@@ -52,12 +54,22 @@ function App() {
         cursorPosition={cursorPosition}
         setCursorPosition={setCursorPosition}
       />
-      <Screen hit={calculatedHitPosition} />
+      <Screen
+        hit={calculatedHitPosition}
+        showOptions={showOptions}
+        setShowOptions={setShowOptions}
+      />
       <Controller
         weapon={weapon}
         target={target}
         manualHitPosition={manualHitPosition}
       />
+      {showOptions ? (
+        <Modal_Options
+          showOptions={showOptions}
+          setShowOptions={setShowOptions}
+        />
+      ) : null}
     </main>
   );
 }
