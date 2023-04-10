@@ -2,8 +2,15 @@ import Hit from "./Hit.tsx";
 
 import s from "../styles/Target.module.css";
 
-interface targetProps {
+interface Target {
+  designation: string;
   name: string;
+  distance: integer;
+  type: string;
+}
+
+interface targetProps {
+  target: Target;
   manualHitPosition: number[];
   setManualHitPosition(): number[];
   calculatedHitPosition: number;
@@ -13,7 +20,7 @@ interface targetProps {
 }
 
 export default function Target({
-  name,
+  target,
   manualHitPosition,
   setManualHitPosition,
   calculatedHitPosition,
@@ -45,7 +52,7 @@ export default function Target({
   return (
     <section
       className={s.container}
-      style={{ backgroundImage: `url("/${name}.jpg")` }}
+      style={{ backgroundImage: `url("/${target.designation}.jpg")` }}
     >
       <Hit
         score={calculatedHitPosition}

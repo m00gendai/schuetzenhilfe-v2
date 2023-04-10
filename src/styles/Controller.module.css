@@ -4,4 +4,58 @@
     height: 100%;
     flex: 1;
     background: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.title{
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    white-space: pre;
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    background: lightblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.display{
+    background: white;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.direction{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: red;
+}
+
+.amount{
+    font-size: 4rem;
+    font-family: monospace;
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
