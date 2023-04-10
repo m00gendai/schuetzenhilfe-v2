@@ -38,8 +38,8 @@ function App() {
   });
 
   const [cursorPosition, setCursorPosition] = useState<number[]>([]);
-  const [manualHitPosition, setManualHitPosition] = useState<number[]>([0, 0]);
-  const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>(0);
+  const [manualHitPosition, setManualHitPosition] = useState<number[]>([]);
+  const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>();
 
   return (
     <main>

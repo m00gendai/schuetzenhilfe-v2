@@ -54,11 +54,13 @@ export default function Target({
       className={s.container}
       style={{ backgroundImage: `url("/${target.designation}.jpg")` }}
     >
-      <Hit
-        score={calculatedHitPosition}
-        y={cursorPosition[1]}
-        x={cursorPosition[0]}
-      />
+      {calculatedHitPosition ? (
+        <Hit
+          score={calculatedHitPosition}
+          y={cursorPosition[1]}
+          x={cursorPosition[0]}
+        />
+      ) : null}
       <div
         className={s.overlay}
         onClick={(event: any) =>
