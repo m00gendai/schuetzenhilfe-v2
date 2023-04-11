@@ -37,7 +37,7 @@ function App() {
     elevationStep: 4.5,
     base: 300,
   });
-
+  const [distance, setDistance] = useState<number>(300);
   const [cursorPosition, setCursorPosition] = useState<number[]>([]);
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([]);
   const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>();
@@ -62,6 +62,7 @@ function App() {
       <Controller
         weapon={weapon}
         target={target}
+        distance={distance}
         manualHitPosition={manualHitPosition}
       />
       {showOptions ? (
@@ -72,6 +73,8 @@ function App() {
           setWeapon={setWeapon}
           target={target}
           setTarget={setTarget}
+          distance={distance}
+          setDistance={setDistance}
         />
       ) : null}
     </main>

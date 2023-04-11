@@ -21,24 +21,30 @@ interface Weapon {
 interface controllerProps {
   weapon: Weapon;
   target: Target;
+  distance: number;
   manualHitPosition: number[];
 }
 
 export default function Controller({
   weapon,
   target,
+  distance,
   manualHitPosition,
 }: controllerProps) {
-  const windageAdjust = Math.round(
-    (100 - manualHitPosition[0]) / (weapon.windageStep * 2)
+  const distanceFactor: number = weapon.base / distance;
+
+  const windageAdjust: number = Math.round(
+    (100 - manualHitPosition[0]) / (weapon.windageStep * 2) / distanceFactor
   );
-  const elevationAdjust = Math.round(
-    (100 - manualHitPosition[1]) / (weapon.elevationStep * 2)
+  const elevationAdjust: number = Math.round(
+    (100 - manualHitPosition[1]) / (weapon.elevationStep * 2) / distanceFactor
   );
 
   return (
     <section className={s.container}>
-      <h1 className={s.title}>{`${weapon.designation}\n${target.name}`}</h1>
+      <h1
+        className={s.title}
+      >{`${weapon.designation}\n${distance}m\n${target.name}`}</h1>
       {manualHitPosition.length === 0 ? (
         <div className={s.placeholder}>
           Auf die Scheibe tippen, um den Treffer festzulegen!
@@ -68,10 +74,10 @@ export default function Controller({
           <div className={s.info}>
             <div
               className={s.steps}
-            >{`Verstellschritt seitlich: ${weapon.windageStep}cm`}</div>
+            >{`Verstellschritt seitlich: ${weapon.windageStep}cm auf ${weapon.base}m`}</div>
             <div
               className={s.steps}
-            >{`Verstellschritt Höhe: ${weapon.elevationStep}cm`}</div>
+            >{`Verstellschritt Höhe: ${weapon.elevationStep}cm auf ${weapon.base}m`}</div>
           </div>
         </div>
       )}

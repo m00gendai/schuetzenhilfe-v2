@@ -24,6 +24,8 @@ interface modalProps {
   setWeapon(): Weapon;
   target: Target;
   setTarget(): Target;
+  distance: number;
+  setDistance(): number;
 }
 
 export default function Modal_Options({
@@ -33,7 +35,16 @@ export default function Modal_Options({
   setWeapon,
   target,
   setTarget,
+  distance,
+  setDistance,
 }: modalProps) {
+  const targetListSorted: Target[] = targetList.sort((a, b) => {
+    const x: String = a.distance;
+    const y: String = b.distance;
+    return x < y ? 1 : x > y ? -1 : 0;
+  });
+  console.log(targetListSorted);
+
   function assignWeapon(event) {
     for (let weapon of weaponList) {
       if (weapon.designation === event.currentTarget.value) {
@@ -48,6 +59,9 @@ export default function Modal_Options({
       }
     }
   }
+  function assignDistance(event) {
+    setDistance(event.currentTarget.value);
+  }
   return (
     <aside className={s.veil}>
       <div className={s.modal}>
@@ -61,6 +75,7 @@ export default function Modal_Options({
           <select
             name="weapons"
             id="select_weapons"
+            value={weapon.designation}
             onChange={(event: any) => assignWeapon(event)}
           >
             {weaponList.map((weapon) => {
@@ -71,9 +86,17 @@ export default function Modal_Options({
               );
             })}
           </select>
+          <input
+            type="number"
+            value={distance}
+            placeholder="300"
+            id="setDistance"
+            onChange={(event: any) => assignDistance(event)}
+          />
           <select
             name="targets"
             id="select_targets"
+            value={target.designation}
             onChange={(event: any) => assignTarget(event)}
           >
             {targetList.map((target) => {
