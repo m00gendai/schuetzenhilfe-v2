@@ -68,12 +68,26 @@ export default function Controller({
             <div className={s.amount}>{Math.abs(elevationAdjust)}</div>
           </div>
           <div className={s.info}>
-            <div
-              className={s.steps}
-            >{`Verstellschritt seitlich: ${weapon.windageStep}cm auf ${weapon.base}m`}</div>
-            <div
-              className={s.steps}
-            >{`Verstellschritt Höhe: ${weapon.elevationStep}cm auf ${weapon.base}m`}</div>
+            <div className={s.steps}>
+              <table>
+                <tbody>
+                  <th colspan="2">{`Verstellschritt seitlich:`}</th>
+                  <tr>
+                    <td>{`${weapon.windageStep}cm auf ${weapon.base}m`}</td>
+                    <td>{`${(weapon.windageStep / distanceFactor).toFixed(
+                      2
+                    )}cm auf ${distance}m`}</td>
+                  </tr>
+                  <th colspan="2">{`Verstellschritt Höhe:`}</th>
+                  <tr colspan="2">
+                    <td>{`${weapon.elevationStep}cm auf ${weapon.base}m`}</td>
+                    <td>{`${(weapon.elevationStep / distanceFactor).toFixed(
+                      2
+                    )}cm auf ${distance}m`}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}

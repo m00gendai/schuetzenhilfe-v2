@@ -1,7 +1,6 @@
 .container{
     position: relative;
     width: 100%;
-    height: 100%;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -69,4 +68,40 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.info{
+    position: relative;
+    width: 90%;
+}
+
+.steps{
+    position: relative;
+    width: 100%;
+}
+
+.steps table{
+    width: 100%;
+    border: 1px solid black;
+}
+
+.steps table > tbody > th{
+    width: 100%;
+    border: 1px solid black;
+}
+
+.steps table > tbody > th > td{
+    text-align: center;
+    border: 1px solid black;
+}
+
+.steps table > tbody > tr{
+    border: 1px solid black;
+}
+
+.steps table > tbody > tr > td{
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+    padding: 0.25rem;
 }
