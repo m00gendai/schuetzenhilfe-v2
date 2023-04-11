@@ -9,5 +9,5 @@ main{
     align-items: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
 }
