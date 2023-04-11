@@ -1,9 +1,5 @@
 import s from "../styles/Controller.module.css";
 
-{
-  /* TODO: Account for distance factors */
-}
-
 interface Target {
   designation: string;
   name: string;
