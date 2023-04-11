@@ -49,6 +49,7 @@ export default function Modal_Options({
     for (let weapon of weaponList) {
       if (weapon.designation === event.currentTarget.value) {
         setWeapon(weapon);
+        localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(weapon));
       }
     }
   }
@@ -56,11 +57,16 @@ export default function Modal_Options({
     for (let target of targetList) {
       if (target.designation === event.currentTarget.value) {
         setTarget(target);
+        localStorage.setItem("Schützenhilfe_Ziel", JSON.stringify(target));
       }
     }
   }
   function assignDistance(event) {
     setDistance(event.currentTarget.value);
+    localStorage.setItem(
+      "Schützenhilfe_Distanz",
+      JSON.stringify(event.currentTarget.value)
+    );
   }
   return (
     <aside className={s.veil}>

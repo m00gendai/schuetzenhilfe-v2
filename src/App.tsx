@@ -25,19 +25,25 @@ interface Weapon {
 }
 
 function App() {
-  const [target, setTarget] = useState<Target>({
-    designation: "300m_A",
-    name: "300m A-Scheibe",
-    distance: 300,
-    type: "300m Rifle",
-  });
-  const [weapon, setWeapon] = useState<Weapon>({
-    designation: "G - Sturmgewehr 90",
-    windageStep: 4.5,
-    elevationStep: 4.5,
-    base: 300,
-  });
-  const [distance, setDistance] = useState<number>(300);
+  const [target, setTarget] = useState<Target>(
+    JSON.parse(localStorage.getItem("Schützenhilfe_Ziel")) || {
+      designation: "300m_A",
+      name: "300m A-Scheibe",
+      distance: 300,
+      type: "300m Rifle",
+    }
+  );
+  const [weapon, setWeapon] = useState<Weapon>(
+    JSON.parse(localStorage.getItem("Schützenhilfe_Waffe")) || {
+      designation: "G - Sturmgewehr 90",
+      windageStep: 4.5,
+      elevationStep: 4.5,
+      base: 300,
+    }
+  );
+  const [distance, setDistance] = useState<number>(
+    JSON.parse(localStorage.getItem("Schützenhilfe_Distanz")) || 300
+  );
   const [cursorPosition, setCursorPosition] = useState<number[]>([]);
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([]);
   const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>();
