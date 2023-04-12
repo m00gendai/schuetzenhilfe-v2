@@ -72,7 +72,7 @@ export default function Controller({
               <table>
                 <tbody>
                   <tr>
-                    <td>{`Verstellschritt Seite:`}</td>
+                    <td colSpan={2}>{`Verstellschritt Seite:`}</td>
                   </tr>
                   <tr>
                     <td>{`${weapon.windageStep}cm auf ${weapon.base}m`}</td>
@@ -81,7 +81,7 @@ export default function Controller({
                     )}cm auf ${distance}m`}</td>
                   </tr>
                   <tr>
-                    <td>{`Verstellschritt Höhe:`}</td>
+                    <td colSpan={2}>{`Verstellschritt Höhe:`}</td>
                   </tr>
                   <tr>
                     <td>{`${weapon.elevationStep}cm auf ${weapon.base}m`}</td>
