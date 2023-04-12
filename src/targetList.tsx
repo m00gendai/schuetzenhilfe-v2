@@ -21,6 +21,12 @@ export const targetList: Target[] = [
     type: "300m Rifle",
   },
   {
+    designation: "300m_Wildsau_rechts",
+    name: "300m Wildsau rechts",
+    distance: 300,
+    type: "300m Rifle",
+  },
+  {
     designation: "25m_Präzision",
     name: "25m Präzisionsscheibe",
     distance: 25,
@@ -29,6 +35,18 @@ export const targetList: Target[] = [
   {
     designation: "25m_Schnellfeuer",
     name: "25m Schnellfeuerscheibe",
+    distance: 25,
+    type: "25m Pistol",
+  },
+  {
+    designation: "25m_Ordonnanz",
+    name: "25m Ordonnanz-Schnellfeuerscheibe",
+    distance: 25,
+    type: "25m Pistol",
+  },
+  {
+    designation: "25m_Olympia",
+    name: "25m O 170/10 (Gangfisch)",
     distance: 25,
     type: "25m Pistol",
   },
@@ -47,6 +65,12 @@ export const targetList: Target[] = [
   {
     designation: "50m_Präzision",
     name: "50m Präzisionsscheibe",
+    distance: 50,
+    type: "50m Pistol",
+  },
+  {
+    designation: "50m_Ruetli",
+    name: "50m Rütli-Figur",
     distance: 50,
     type: "50m Pistol",
   },
