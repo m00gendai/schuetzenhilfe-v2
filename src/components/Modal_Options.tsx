@@ -43,7 +43,6 @@ export default function Modal_Options({
     const y: String = b.distance;
     return x < y ? 1 : x > y ? -1 : 0;
   });
-  console.log(targetListSorted);
 
   function assignWeapon(event) {
     for (let weapon of weaponList) {
@@ -75,44 +74,53 @@ export default function Modal_Options({
           className={s.close}
           onClick={() => setShowOptions(!showOptions)}
         >
-          X
+          🗙
         </button>
         <div className={s.content}>
-          <select
-            name="weapons"
-            id="select_weapons"
-            value={weapon.designation}
-            onChange={(event: any) => assignWeapon(event)}
-          >
-            {weaponList.map((weapon) => {
-              return (
-                <option key={weapon.designation} value={weapon.designation}>
-                  {weapon.designation}
-                </option>
-              );
-            })}
-          </select>
-          <input
-            type="number"
-            value={distance}
-            placeholder="300"
-            id="setDistance"
-            onChange={(event: any) => assignDistance(event)}
-          />
-          <select
-            name="targets"
-            id="select_targets"
-            value={target.designation}
-            onChange={(event: any) => assignTarget(event)}
-          >
-            {targetList.map((target) => {
-              return (
-                <option key={target.designation} value={target.designation}>
-                  {target.name}
-                </option>
-              );
-            })}
-          </select>
+          <div className={s.item}>
+            <h2 className={s.title}>Waffe / Diopter</h2>
+            <select
+              name="weapons"
+              id="select_weapons"
+              value={weapon.designation}
+              onChange={(event: any) => assignWeapon(event)}
+            >
+              {weaponList.map((weapon) => {
+                return (
+                  <option key={weapon.designation} value={weapon.designation}>
+                    {weapon.designation}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className={s.item}>
+            <h2 className={s.title}>Distanz</h2>
+            <input
+              type="number"
+              value={distance}
+              placeholder="300"
+              id="setDistance"
+              onChange={(event: any) => assignDistance(event)}
+            />
+          </div>
+          <div className={s.item}>
+            <h2 className={s.title}>Zielscheibe</h2>
+            <select
+              name="targets"
+              id="select_targets"
+              value={target.designation}
+              onChange={(event: any) => assignTarget(event)}
+            >
+              {targetList.map((target) => {
+                return (
+                  <option key={target.designation} value={target.designation}>
+                    {target.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
       </div>
     </aside>

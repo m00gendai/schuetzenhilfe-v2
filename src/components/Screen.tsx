@@ -14,7 +14,7 @@ export default function Screen({
   return (
     <section className={s.container}>
       <button className={s.button} onClick={() => setShowOptions(!showOptions)}>
-        O
+        ⚙
       </button>
       <div className={s.score}>{hit < 0 ? "0" : hit}</div>
       <button className={s.button}>?</button>

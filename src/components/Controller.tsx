@@ -71,15 +71,19 @@ export default function Controller({
             <div className={s.steps}>
               <table>
                 <tbody>
-                  <th colspan="2">{`Verstellschritt seitlich:`}</th>
+                  <tr colSpan="2">
+                    <td colSpan="2">{`Verstellschritt Seite:`}</td>
+                  </tr>
                   <tr>
                     <td>{`${weapon.windageStep}cm auf ${weapon.base}m`}</td>
                     <td>{`${(weapon.windageStep / distanceFactor).toFixed(
                       2
                     )}cm auf ${distance}m`}</td>
                   </tr>
-                  <th colspan="2">{`Verstellschritt Höhe:`}</th>
-                  <tr colspan="2">
+                  <tr colSpan="2">
+                    <td colSpan="2">{`Verstellschritt Höhe:`}</td>
+                  </tr>
+                  <tr colSpan="2">
                     <td>{`${weapon.elevationStep}cm auf ${weapon.base}m`}</td>
                     <td>{`${(weapon.elevationStep / distanceFactor).toFixed(
                       2
