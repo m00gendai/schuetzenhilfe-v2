@@ -45,15 +45,45 @@ export const weaponList: Weapon[] = [
     base: 25,
   },
   {
+    designation: "P - Hämmerli 280",
+    windageStep: 1.0,
+    elevationStep: 1.0,
+    base: 25,
+  },
+  {
     designation: "P - Pardini SP",
     windageStep: 0.5,
     elevationStep: 0.5,
     base: 25,
   },
   {
+    designation: "P - Walther GSP",
+    windageStep: 0.5,
+    elevationStep: 0.7,
+    base: 25,
+  },
+  {
+    designation: "P - Ruger MK I / II / III",
+    windageStep: 1.27,
+    elevationStep: 1.27,
+    base: 22.86,
+  },
+  {
     designation: "D - Dobler Mikrometer-Visier zu P210",
     windageStep: 1.5,
     elevationStep: 1.5,
+    base: 25,
+  },
+  {
+    designation: "D - CZ Mikrometer-Visier zu SP-01 Shadow",
+    windageStep: 1.3,
+    elevationStep: 1.3,
+    base: 25,
+  },
+  {
+    designation: "D - CZ Mikrometer-Visier zu Shadow 2",
+    windageStep: 1.3,
+    elevationStep: 1.3,
     base: 25,
   },
   {
