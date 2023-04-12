@@ -35,13 +35,13 @@ export default function Controller({
   const elevationAdjust: number = Math.round(
     (100 - manualHitPosition[1]) / (weapon.elevationStep * 2) / distanceFactor
   );
-
+  console.log(manualHitPosition);
   return (
     <section className={s.container}>
       <h1
         className={s.title}
       >{`${weapon.designation}\n${distance}m\n${target.name}`}</h1>
-      {manualHitPosition.length === 0 ? (
+      {manualHitPosition[0] === 999 ? (
         <div className={s.placeholder}>
           Auf die Scheibe tippen, um den Treffer festzulegen!
         </div>
