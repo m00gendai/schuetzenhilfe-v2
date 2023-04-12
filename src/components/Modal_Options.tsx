@@ -13,19 +13,19 @@ interface Weapon {
 interface Target {
   designation: string;
   name: string;
-  distance: integer;
+  distance: number;
   type: string;
 }
 
 interface modalProps {
   showOptions: boolean;
-  setShowOptions(): boolean;
+  setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
   weapon: Weapon;
-  setWeapon(): Weapon;
+  setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
   target: Target;
-  setTarget(): Target;
+  setTarget: React.Dispatch<React.SetStateAction<Target>>;
   distance: number;
-  setDistance(): number;
+  setDistance: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function Modal_Options({
@@ -39,12 +39,12 @@ export default function Modal_Options({
   setDistance,
 }: modalProps) {
   const targetListSorted: Target[] = targetList.sort((a, b) => {
-    const x: String = a.distance;
-    const y: String = b.distance;
+    const x: String = a.distance.toString();
+    const y: String = b.distance.toString();
     return x < y ? 1 : x > y ? -1 : 0;
   });
 
-  function assignWeapon(event) {
+  function assignWeapon(event: any) {
     for (let weapon of weaponList) {
       if (weapon.designation === event.currentTarget.value) {
         setWeapon(weapon);
@@ -52,7 +52,7 @@ export default function Modal_Options({
       }
     }
   }
-  function assignTarget(event) {
+  function assignTarget(event: any) {
     for (let target of targetList) {
       if (target.designation === event.currentTarget.value) {
         setTarget(target);
@@ -60,7 +60,7 @@ export default function Modal_Options({
       }
     }
   }
-  function assignDistance(event) {
+  function assignDistance(event: any) {
     setDistance(event.currentTarget.value);
     localStorage.setItem(
       "Schützenhilfe_Distanz",

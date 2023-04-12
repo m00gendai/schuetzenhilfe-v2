@@ -5,18 +5,18 @@ import s from "../styles/Target.module.css";
 interface Target {
   designation: string;
   name: string;
-  distance: integer;
+  distance: number;
   type: string;
 }
 
 interface targetProps {
   target: Target;
   manualHitPosition: number[];
-  setManualHitPosition(): number[];
+  setManualHitPosition: React.Dispatch<React.SetStateAction<number[]>>;
   calculatedHitPosition: number;
-  setCalculatedHitPosition(): number;
+  setCalculatedHitPosition: React.Dispatch<React.SetStateAction<number>>;
   cursorPosition: number[];
-  setCursorPosition(): number[];
+  setCursorPosition: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export default function Target({
@@ -28,7 +28,7 @@ export default function Target({
   cursorPosition,
   setCursorPosition,
 }: targetProps) {
-  function getManualHitPosition(event) {
+  function getManualHitPosition(event: any) {
     const width = event.currentTarget.getBoundingClientRect().width;
     const height = event.currentTarget.getBoundingClientRect().height;
     const sizeConstant = width / 100;
@@ -39,7 +39,7 @@ export default function Target({
     return [xCoordinate, yCoordinate];
   }
 
-  function calculateHit(hitPosition) {
+  function calculateHit(hitPosition: number[]) {
     const x = hitPosition[0];
     const y = hitPosition[1];
     const distToCenter = Math.floor(
@@ -49,7 +49,7 @@ export default function Target({
     setCalculatedHitPosition(hit);
   }
 
-  function assignManualHitPosition(event) {
+  function assignManualHitPosition(event: any) {
     const manualHitPosition: number[] = getManualHitPosition(event);
     setManualHitPosition(manualHitPosition);
   }

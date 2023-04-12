@@ -2,8 +2,8 @@ import s from "../styles/Modal_Help_About.module.css";
 
 interface modalProps {
   showHelp: boolean;
-  setShowHelp(): boolean;
-  setChapter(): String;
+  setShowHelp: React.Dispatch<React.SetStateAction<boolean>>;
+  setChapter: React.Dispatch<React.SetStateAction<String>>;
 }
 
 export default function Modal_Help_About({

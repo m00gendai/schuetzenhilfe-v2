@@ -3,9 +3,9 @@ import s from "../styles/Screen.module.css";
 interface screenProps {
   hit: number;
   showOptions: boolean;
-  setShowOptions(): boolean;
+  setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
   showHelp: boolean;
-  setShowHelp(): boolean;
+  setShowHelp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Screen({

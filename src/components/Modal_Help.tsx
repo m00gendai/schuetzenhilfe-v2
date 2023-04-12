@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
@@ -8,7 +8,7 @@ import s from "../styles/Modal_Help.module.css";
 
 interface modalProps {
   showHelp: boolean;
-  setShowHelp(): boolean;
+  setShowHelp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {

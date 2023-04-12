@@ -3,7 +3,7 @@ import s from "../styles/Controller.module.css";
 interface Target {
   designation: string;
   name: string;
-  distance: integer;
+  distance: number;
   type: string;
 }
 
@@ -71,8 +71,8 @@ export default function Controller({
             <div className={s.steps}>
               <table>
                 <tbody>
-                  <tr colSpan="2">
-                    <td colSpan="2">{`Verstellschritt Seite:`}</td>
+                  <tr>
+                    <td>{`Verstellschritt Seite:`}</td>
                   </tr>
                   <tr>
                     <td>{`${weapon.windageStep}cm auf ${weapon.base}m`}</td>
@@ -80,10 +80,10 @@ export default function Controller({
                       2
                     )}cm auf ${distance}m`}</td>
                   </tr>
-                  <tr colSpan="2">
-                    <td colSpan="2">{`Verstellschritt Höhe:`}</td>
+                  <tr>
+                    <td>{`Verstellschritt Höhe:`}</td>
                   </tr>
-                  <tr colSpan="2">
+                  <tr>
                     <td>{`${weapon.elevationStep}cm auf ${weapon.base}m`}</td>
                     <td>{`${(weapon.elevationStep / distanceFactor).toFixed(
                       2
