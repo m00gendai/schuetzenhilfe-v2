@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Modal_Help_Sights from "./Modal_Help_Sights.tsx";
-import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller.tsx";
-import Modal_Help_About from "./Modal_Help_About.tsx";
+import Modal_Help_Sights from "./Modal_Help_Sights";
+import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
+import Modal_Help_About from "./Modal_Help_About";
 
 import s from "../styles/Modal_Help.module.css";
 

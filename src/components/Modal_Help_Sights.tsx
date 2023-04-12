@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Modal_Help_Sights_Stgw90 from "./Modal_Help_Sights_Stgw90.tsx";
+import Modal_Help_Sights_Stgw90 from "./Modal_Help_Sights_Stgw90";
 
 import s from "../styles/Modal_Help_Sights.module.css";
 

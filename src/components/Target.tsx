@@ -1,4 +1,4 @@
-import Hit from "./Hit.tsx";
+import Hit from "./Hit";
 
 import s from "../styles/Target.module.css";
 
@@ -49,6 +49,11 @@ export default function Target({
     setCalculatedHitPosition(hit);
   }
 
+  function assignManualHitPosition(event) {
+    const manualHitPosition: number[] = getManualHitPosition(event);
+    setManualHitPosition(manualHitPosition);
+  }
+
   return (
     <section
       className={s.container}
@@ -63,9 +68,7 @@ export default function Target({
       ) : null}
       <div
         className={s.overlay}
-        onClick={(event: any) =>
-          setManualHitPosition(getManualHitPosition(event))
-        }
+        onClick={(event: any) => assignManualHitPosition(event)}
       ></div>
     </section>
   );

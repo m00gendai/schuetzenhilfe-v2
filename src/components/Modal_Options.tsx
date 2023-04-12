@@ -1,7 +1,7 @@
 import s from "../styles/Modal_Options.module.css";
 
-import { weaponList } from "../weaponList.tsx";
-import { targetList } from "../targetList.tsx";
+import { weaponList } from "../weaponList";
+import { targetList } from "../targetList";
 
 interface Weapon {
   designation: string;
