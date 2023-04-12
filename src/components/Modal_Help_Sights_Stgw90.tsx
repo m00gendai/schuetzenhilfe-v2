@@ -1,3 +1,6 @@
+import CloseIcon from "@mui/icons-material/Close";
+import WestIcon from "@mui/icons-material/West";
+
 import s from "../styles/Modal_Help_Sights_Stgw90.module.css";
 
 interface modalProps {
@@ -15,10 +18,10 @@ export default function Modal_Help_Sights_Stgw90({
     <>
       <div className={s.buttonRow}>
         <button className={s.back} onClick={() => setSubchapter("sights")}>
-          ←
+          <WestIcon />
         </button>
         <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
-          🗙
+          <CloseIcon />
         </button>
       </div>
       <div className={s.content}>

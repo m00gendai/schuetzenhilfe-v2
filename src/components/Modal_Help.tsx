@@ -4,6 +4,8 @@ import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
 import Modal_Help_About from "./Modal_Help_About";
 
+import CloseIcon from "@mui/icons-material/Close";
+
 import s from "../styles/Modal_Help.module.css";
 
 interface modalProps {
@@ -20,7 +22,7 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
         {chapter === "main" ? (
           <>
             <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
-              🗙
+              <CloseIcon />
             </button>
             <div className={s.content}>
               <div

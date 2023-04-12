@@ -1,3 +1,5 @@
+import CloseIcon from "@mui/icons-material/Close";
+
 import s from "../styles/Modal_Options.module.css";
 
 import { weaponList } from "../weaponList";
@@ -74,7 +76,7 @@ export default function Modal_Options({
           className={s.close}
           onClick={() => setShowOptions(!showOptions)}
         >
-          🗙
+          <CloseIcon />
         </button>
         <div className={s.content}>
           <div className={s.item}>
