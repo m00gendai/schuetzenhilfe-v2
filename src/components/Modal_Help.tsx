@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Modal_Help_About from "./Modal_Help_About.tsx";
+import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller.tsx";
 
 import s from "../styles/Modal_Help.module.css";
 
@@ -10,9 +11,6 @@ interface modalProps {
 }
 
 export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
-  const date = new Date();
-  const currentYear = date.getFullYear();
-
   const [chapter, setChapter] = useState<String>("main");
 
   return (
@@ -24,7 +22,10 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
               🗙
             </button>
             <div className={s.content}>
-              <div className={s.chapter}>
+              <div
+                className={s.chapter}
+                onClick={() => setChapter("mode_controller")}
+              >
                 <p className={s.chapterTitle}>Modus Zeiger</p>
                 <p className={s.arrow}>→</p>
               </div>
@@ -36,11 +37,14 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
                 <p className={s.chapterTitle}>Über</p>
                 <p className={s.arrow}>→</p>
               </div>
-              <div className={s.copy}>
-                {`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}
-              </div>
             </div>
           </>
+        ) : chapter === "mode_controller" ? (
+          <Modal_Help_Mode_Controller
+            showHelp={showHelp}
+            setShowHelp={setShowHelp}
+            setChapter={setChapter}
+          />
         ) : chapter === "about" ? (
           <Modal_Help_About
             showHelp={showHelp}
