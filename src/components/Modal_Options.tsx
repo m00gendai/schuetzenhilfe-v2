@@ -45,6 +45,11 @@ export default function Modal_Options({
     const y: String = b.distance.toString();
     return x < y ? 1 : x > y ? -1 : 0;
   });
+  const weaponListSorted: Weapon[] = weaponList.sort((a, b) => {
+    const x: String = a.designation.toString();
+    const y: String = b.designation.toString();
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
 
   function assignWeapon(event: any) {
     for (let weapon of weaponList) {
@@ -87,7 +92,7 @@ export default function Modal_Options({
               value={weapon.designation}
               onChange={(event: any) => assignWeapon(event)}
             >
-              {weaponList.map((weapon) => {
+              {weaponListSorted.map((weapon) => {
                 return (
                   <option key={weapon.designation} value={weapon.designation}>
                     {weapon.designation}
