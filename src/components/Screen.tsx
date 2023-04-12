@@ -1,3 +1,6 @@
+import SettingsIcon from "@mui/icons-material/Settings";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+
 import s from "../styles/Screen.module.css";
 
 interface screenProps {
@@ -18,11 +21,11 @@ export default function Screen({
   return (
     <section className={s.container}>
       <button className={s.button} onClick={() => setShowOptions(!showOptions)}>
-        ⚙
+        <SettingsIcon />
       </button>
       <div className={s.score}>{hit < 0 ? "0" : hit}</div>
       <button className={s.button} onClick={() => setShowHelp(!showHelp)}>
-        ?
+        <MenuBookIcon />
       </button>
     </section>
   );
