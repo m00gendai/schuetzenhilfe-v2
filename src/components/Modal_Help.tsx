@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import Modal_Help_About from "./Modal_Help_About.tsx";
+import Modal_Help_Sights from "./Modal_Help_Sights.tsx";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller.tsx";
+import Modal_Help_About from "./Modal_Help_About.tsx";
 
 import s from "../styles/Modal_Help.module.css";
 
@@ -29,7 +30,7 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
                 <p className={s.chapterTitle}>Modus Zeiger</p>
                 <p className={s.arrow}>→</p>
               </div>
-              <div className={s.chapter}>
+              <div className={s.chapter} onClick={() => setChapter("sights")}>
                 <p className={s.chapterTitle}>Visierverstellungen</p>
                 <p className={s.arrow}>→</p>
               </div>
@@ -39,6 +40,12 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
               </div>
             </div>
           </>
+        ) : chapter === "sights" ? (
+          <Modal_Help_Sights
+            showHelp={showHelp}
+            setShowHelp={setShowHelp}
+            setChapter={setChapter}
+          />
         ) : chapter === "mode_controller" ? (
           <Modal_Help_Mode_Controller
             showHelp={showHelp}
