@@ -1,7 +1,7 @@
 interface Target {
   designation: string;
   name: string;
-  distance: integer;
+  distance: number;
   type: string;
 }
 
