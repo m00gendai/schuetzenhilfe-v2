@@ -1,20 +1,20 @@
-import Target from "./components/Target.tsx";
-import Screen from "./components/Screen.tsx";
-import Controller from "./components/Controller.tsx";
-import Modal_Options from "./components/Modal_Options.tsx";
-import Modal_Help from "./components/Modal_Help.tsx";
+import Target from "./components/Target";
+import Screen from "./components/Screen";
+import Controller from "./components/Controller";
+import Modal_Options from "./components/Modal_Options";
+import Modal_Help from "./components/Modal_Help";
 
 import { useState } from "react";
 
-import { targetList } from "./targetList.tsx";
-import { weaponList } from "./weaponList.tsx";
+import { targetList } from "./targetList";
+import { weaponList } from "./weaponList";
 
 import "./styles/globals.css";
 
 interface Target {
   designation: string;
   name: string;
-  distance: integer;
+  distance: number;
   type: string;
 }
 
