@@ -76,7 +76,7 @@ export default function Controller({
                   </tr>
                   <tr>
                     <td>{`${weapon.windageStep}cm auf ${weapon.base}m`}</td>
-                    <td>{`${(weapon.windageStep / distanceFactor).toFixed(
+                    <td>{`${(weapon.windageStep * distanceFactor).toFixed(
                       2
                     )}cm auf ${distance}m`}</td>
                   </tr>
@@ -85,7 +85,7 @@ export default function Controller({
                   </tr>
                   <tr>
                     <td>{`${weapon.elevationStep}cm auf ${weapon.base}m`}</td>
-                    <td>{`${(weapon.elevationStep / distanceFactor).toFixed(
+                    <td>{`${(weapon.elevationStep * distanceFactor).toFixed(
                       2
                     )}cm auf ${distance}m`}</td>
                   </tr>
