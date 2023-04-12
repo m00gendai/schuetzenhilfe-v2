@@ -4,12 +4,16 @@ interface screenProps {
   hit: number;
   showOptions: boolean;
   setShowOptions(): boolean;
+  showHelp: boolean;
+  setShowHelp(): boolean;
 }
 
 export default function Screen({
   hit,
   showOptions,
   setShowOptions,
+  showHelp,
+  setShowHelp,
 }: screenProps) {
   return (
     <section className={s.container}>
@@ -17,7 +21,9 @@ export default function Screen({
         ⚙
       </button>
       <div className={s.score}>{hit < 0 ? "0" : hit}</div>
-      <button className={s.button}>?</button>
+      <button className={s.button} onClick={() => setShowHelp(!showHelp)}>
+        ?
+      </button>
     </section>
   );
 }

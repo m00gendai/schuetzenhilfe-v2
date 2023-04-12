@@ -2,6 +2,7 @@ import Target from "./components/Target.tsx";
 import Screen from "./components/Screen.tsx";
 import Controller from "./components/Controller.tsx";
 import Modal_Options from "./components/Modal_Options.tsx";
+import Modal_Help from "./components/Modal_Help.tsx";
 
 import { useState } from "react";
 
@@ -48,6 +49,7 @@ function App() {
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([]);
   const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>();
   const [showOptions, setShowOptions] = useState<boolean>(false);
+  const [showHelp, setShowHelp] = useState<boolean>(false);
 
   return (
     <main>
@@ -64,6 +66,8 @@ function App() {
         hit={calculatedHitPosition}
         showOptions={showOptions}
         setShowOptions={setShowOptions}
+        showHelp={showHelp}
+        setShowHelp={setShowHelp}
       />
       <Controller
         weapon={weapon}
@@ -82,6 +86,9 @@ function App() {
           distance={distance}
           setDistance={setDistance}
         />
+      ) : null}
+      {showHelp ? (
+        <Modal_Help showHelp={showHelp} setShowHelp={setShowHelp} />
       ) : null}
     </main>
   );
