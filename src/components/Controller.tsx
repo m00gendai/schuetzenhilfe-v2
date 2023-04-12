@@ -35,7 +35,7 @@ export default function Controller({
   const elevationAdjust: number = Math.round(
     (100 - manualHitPosition[1]) / (weapon.elevationStep * 2) / distanceFactor
   );
-  console.log(manualHitPosition);
+
   return (
     <section className={s.container}>
       <h1
