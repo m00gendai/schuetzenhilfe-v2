@@ -1,13 +1,36 @@
 main{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    
+    
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
-    flex-direction: row;
+    
+}
+
+@media screen and (orientation:landscape) {
+    #root{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    main {
+        position: relative;
+        height: 100vh;
+        aspect-ratio: 14/21;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    main {
+        position: absolute;
+            top: 0;
+            left: 0;
+        width: 100vw;
+            height: 100vh;
+    }
 }
