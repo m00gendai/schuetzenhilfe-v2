@@ -37,8 +37,8 @@ export default function Modal_Help_Sights_Stgw90({
           <div className={s.image}></div>
           <p>
             Wenn der Treffer <strong>rechts</strong> dem Zentrum liegt,
-            Seitenkorrekturschraube im <strong>Uhrzeigersinn</strong> drehen. im{" "}
-            <strong>Gegeuhrzeigersinn</strong> drehen.
+            Seitenkorrekturschraube im <strong>Gegenuhrzeigersinn</strong>{" "}
+            drehen.
           </p>
         </div>
         <div className={s.item}>
