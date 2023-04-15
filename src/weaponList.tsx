@@ -51,6 +51,12 @@ export const weaponList: Weapon[] = [
     base: 25,
   },
   {
+    designation: "P - Hämmerli 208 / 208S / 215",
+    windageStep: 1.0,
+    elevationStep: 1.0,
+    base: 25,
+  },
+  {
     designation: "P - Pardini SP",
     windageStep: 0.5,
     elevationStep: 0.5,
@@ -69,19 +75,19 @@ export const weaponList: Weapon[] = [
     base: 22.86,
   },
   {
-    designation: "D - Dobler Mikrometer-Visier zu P210",
+    designation: "V - Dobler Mikrometer-Visier zu P210",
     windageStep: 1.5,
     elevationStep: 1.5,
     base: 25,
   },
   {
-    designation: "D - CZ Mikrometer-Visier zu SP-01 Shadow",
+    designation: "V - CZ Mikrometer-Visier zu SP-01 Shadow",
     windageStep: 1.3,
     elevationStep: 1.3,
     base: 25,
   },
   {
-    designation: "D - CZ Mikrometer-Visier zu Shadow 2",
+    designation: "V - CZ Mikrometer-Visier zu Shadow 2",
     windageStep: 1.3,
     elevationStep: 1.3,
     base: 25,
