@@ -19,15 +19,16 @@ interface Spoilers{
   }
 
   interface modalProps{
-    spoiler: Spoilers;
-    weaponList: Weapon[];
-    setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
     base: number;
     windage: number;
     elevation: number;
+    spoiler: Spoilers;
+    weaponList: Weapon[];
+    setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
+    
   }
 
-export default function Modal_Options_WeaponSelect_weapon({spoiler, weaponList, setWeapon, base, windage, elevation}:modalProps){
+export default function Modal_Options_WeaponSelect_weapon({base, windage, elevation, spoiler, weaponList, setWeapon}:modalProps){
 
     function assignWeapon(event: any) {
         const weaponImages = document.querySelectorAll(`.${s.weaponImage}`);
