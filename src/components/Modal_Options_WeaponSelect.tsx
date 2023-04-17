@@ -35,7 +35,7 @@ export default function Modal_Options_WeaponSelect({weaponList, setWeapon}:modal
     return(
       <div className={s.content}>
         {spoilers.map(spoiler=>{
-          return <Modal_Options_WeaponSelect_Weapon spoiler={spoiler} weaponList={weaponList} setWeapon={setWeapon}/>
+          return <Modal_Options_WeaponSelect_Weapon key={spoiler.prefix} spoiler={spoiler} weaponList={weaponList} setWeapon={setWeapon}/>
         })}
         
         </div>

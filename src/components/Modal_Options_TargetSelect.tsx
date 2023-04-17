@@ -35,7 +35,7 @@ export default function Modal_Options_TargetSelect({targetList, setTarget}:modal
       <div className={s.content}>
         {
           spoilers.map(spoiler =>{
-            return <Modal_Options_TargetSelect_Target spoiler={spoiler} targetList={targetList} setTarget={setTarget}/>
+            return <Modal_Options_TargetSelect_Target key={spoiler.name} spoiler={spoiler} targetList={targetList} setTarget={setTarget}/>
           })
         }
           </div>
