@@ -56,6 +56,26 @@
     margin: 0;
 }
 
+.links{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 1rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.links a{
+    aspect-ratio: 2/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid black;
+    box-shadow: 5px 5px 0px 0px black;
+    color: black;
+}
+
 .copy {
     position: relative;
     width: 100%;
@@ -63,4 +83,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
