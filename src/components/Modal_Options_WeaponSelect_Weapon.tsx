@@ -21,17 +21,32 @@ interface Spoilers{
   interface modalProps{
     spoiler: Spoilers;
     weaponList: Weapon[];
-    setWeapon: React.Dispatch<React.SetStateAction<Weapon>>
+    setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
+    base: number;
+    windage: number;
+    elevation: number;
   }
 
-export default function Modal_Options_WeaponSelect_weapon({spoiler, weaponList, setWeapon}:modalProps){
+export default function Modal_Options_WeaponSelect_weapon({spoiler, weaponList, setWeapon, base, windage, elevation}:modalProps){
 
     function assignWeapon(event: any) {
         const weaponImages = document.querySelectorAll(`.${s.weaponImage}`);
         for (let weapon of weaponList) {
+          const prefix: string[] = weapon.designation.split(" - ")
           if (weapon.designation === event.currentTarget.id) {
+            if(prefix[0] === "I"){
+              const d = weapon.designation
+              const w = windage
+              const e = elevation
+              const b = base
+              const custom: Weapon = {designation: d, windageStep: w, elevationStep: e, base: b}
+              console.log(custom)
+              setWeapon(custom)
+              localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(custom));
+            } else {
             setWeapon(weapon);
             localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(weapon));
+            }
           }
         }
         for (let weapon of weaponImages) {
@@ -44,6 +59,7 @@ export default function Modal_Options_WeaponSelect_weapon({spoiler, weaponList, 
       }
 
       const types: weaponType[] = [
+        {prefix: "I", name: "Individuell", },
         {prefix: "G", name: "Gewehre", },
         {prefix: "P", name: "Pistolen", },
         {prefix: "D", name: "Gewehrdiopter", },
