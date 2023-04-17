@@ -81,6 +81,18 @@ export const targetList: Target[] = [
     type: "P10",
   },
   {
+    designation: "10m_LG_ISSF",
+    name: "10m Luftgewehr SSV/ISSF",
+    distance: 10,
+    type: "G10",
+  },
+  {
+    designation: "50m_G_10er_SSV",
+    name: "50m Gewehr 10er SSV",
+    distance: 50,
+    type: "G50",
+  },
+  {
     designation: "50m_Morgarten",
     name: "50m Morgartenscheibe",
     distance: 50,
