@@ -16,6 +16,7 @@
     justify-content: center;
     align-items: flex-start;
     overflow: hidden;
+    flex-wrap: wrap;
 }
 
 @media screen and (orientation:landscape) {
@@ -48,14 +49,41 @@
     aspect-ratio: 1/1;
 }
 
+.optionSelect{
+    margin: 3rem 0 1rem 0;
+    position: relative;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 1rem;
+}
+
+.optionSelect button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 1.5rem;
+}
+
 .content{
     width: 90%;
     height: calc(90% - 4rem);
     padding: 0 1rem 2rem 1rem;
-    margin: 3rem 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.contentInputs{
+    width: 90%;
+    height: calc(90% - 4rem);
+    padding: 0 1rem 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     overflow-y: scroll;
 }
@@ -87,7 +115,7 @@
     border: 0;
     outline: 0;
     text-indent: 1rem;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 .title{
@@ -114,7 +142,7 @@
     position: relative;
     width: 90%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1rem;
 }
 
