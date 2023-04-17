@@ -76,7 +76,7 @@ function App() {
   const [weapon, setWeapon] = useState<Weapon>(initialWeapon);
   const [distance, setDistance] = useState<number>(initialDistance);
   const [windage, setWindage] = useState<number>(initialCustomWindage);
-  const [elevation, setElevation] = useState<number>(initialCustomWindage);
+  const [elevation, setElevation] = useState<number>(initialCustomElevation);
   const [base, setBase] = useState<number>(initialCustomBase)
   const [cursorPosition, setCursorPosition] = useState<number[]>([999, 999]);
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([
