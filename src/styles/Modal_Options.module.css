@@ -15,6 +15,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    overflow: hidden;
+    flex-wrap: wrap;
 }
 
 @media screen and (orientation:landscape) {
@@ -47,13 +49,43 @@
     aspect-ratio: 1/1;
 }
 
+.optionSelect{
+    margin: 3rem 0 1rem 0;
+    position: relative;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 1rem;
+}
+
+.optionSelect button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 1.5rem;
+}
+
 .content{
     width: 90%;
-    margin: 3rem 0 0 0;
+    height: calc(90% - 4rem);
+    padding: 0 1rem 2rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.contentInputs{
+    width: 90%;
+    height: calc(90% - 4rem);
+    padding: 0 1rem 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
 .item{
@@ -83,7 +115,7 @@
     border: 0;
     outline: 0;
     text-indent: 1rem;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 .title{
@@ -94,3 +126,48 @@
     font-family: "Arial";
     margin: 0 0 0.5rem 0;
 }
+.itemGrid{
+    position: relative;
+    width: 100%;
+    border: 1px solid black;
+    padding: 0.25rem;
+    margin: 0 0 2rem 0;
+    box-shadow: 5px 5px 0px 0px black;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.itemGridInner{
+    position: relative;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 1rem;
+}
+
+.targetImage, .weaponImage{
+    position: relative;
+    aspect-ratio: 1/1;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing:border-box;
+    border: 2px solid black;
+}
+
+.targetName, .weaponName{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    font-family: "Arial";
+}
+

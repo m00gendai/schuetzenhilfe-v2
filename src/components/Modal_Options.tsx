@@ -2,8 +2,13 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import s from "../styles/Modal_Options.module.css";
 
+import {useState} from "react"
+
 import { weaponList } from "../weaponList";
 import { targetList } from "../targetList";
+import Modal_Options_TargetSelect from "./Modal_Options_TargetSelect";
+import Modal_Options_WeaponSelect from "./Modal_Options_WeaponSelect";
+import Modal_Options_FactorsSelect from "./Modal_Options_FactorsSelect"
 
 interface Weapon {
   designation: string;
@@ -18,6 +23,7 @@ interface Target {
   distance: number;
   type: string;
 }
+
 
 interface modalProps {
   showOptions: boolean;
@@ -40,10 +46,13 @@ export default function Modal_Options({
   distance,
   setDistance,
 }: modalProps) {
+
+  const [showOption, setShowOption] = useState<String>("target")
+
   const targetListSorted: Target[] = targetList.sort((a, b) => {
-    const x: String = a.distance.toString();
-    const y: String = b.distance.toString();
-    return x < y ? 1 : x > y ? -1 : 0;
+    const x: String = a.type;
+    const y: String = b.type;
+    return x < y ? -1 : x > y ? 1 : 0;
   });
   const weaponListSorted: Weapon[] = weaponList.sort((a, b) => {
     const x: String = a.designation.toString();
@@ -51,29 +60,9 @@ export default function Modal_Options({
     return x < y ? -1 : x > y ? 1 : 0;
   });
 
-  function assignWeapon(event: any) {
-    for (let weapon of weaponList) {
-      if (weapon.designation === event.currentTarget.value) {
-        setWeapon(weapon);
-        localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(weapon));
-      }
-    }
-  }
-  function assignTarget(event: any) {
-    for (let target of targetList) {
-      if (target.designation === event.currentTarget.value) {
-        setTarget(target);
-        localStorage.setItem("Schützenhilfe_Ziel", JSON.stringify(target));
-      }
-    }
-  }
-  function assignDistance(event: any) {
-    setDistance(event.currentTarget.value);
-    localStorage.setItem(
-      "Schützenhilfe_Distanz",
-      JSON.stringify(event.currentTarget.value)
-    );
-  }
+  
+  
+  
   return (
     <aside className={s.veil}>
       <div className={s.modal}>
@@ -83,52 +72,17 @@ export default function Modal_Options({
         >
           <CloseIcon />
         </button>
-        <div className={s.content}>
-          <div className={s.item}>
-            <h2 className={s.title}>Waffe / Diopter</h2>
-            <select
-              name="weapons"
-              id="select_weapons"
-              value={weapon.designation}
-              onChange={(event: any) => assignWeapon(event)}
-            >
-              {weaponListSorted.map((weapon) => {
-                return (
-                  <option key={weapon.designation} value={weapon.designation}>
-                    {weapon.designation}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className={s.item}>
-            <h2 className={s.title}>Distanz</h2>
-            <input
-              type="number"
-              value={distance}
-              placeholder="300"
-              id="setDistance"
-              onChange={(event: any) => assignDistance(event)}
-            />
-          </div>
-          <div className={s.item}>
-            <h2 className={s.title}>Zielscheibe</h2>
-            <select
-              name="targets"
-              id="select_targets"
-              value={target.designation}
-              onChange={(event: any) => assignTarget(event)}
-            >
-              {targetList.map((target) => {
-                return (
-                  <option key={target.designation} value={target.designation}>
-                    {target.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+        <div className={s.optionSelect}>
+          <button onClick={()=>setShowOption("target")}>🞋</button>
+          <button onClick={()=>setShowOption("weapon")}>🔫</button>
+          <button onClick={()=>setShowOption("factors")}>📐</button>
         </div>
+        {showOption === "target" ? 
+        <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget}/> :
+        showOption === "weapon" ? 
+        <Modal_Options_WeaponSelect weaponList={weaponListSorted} setWeapon={setWeapon} /> :
+        <Modal_Options_FactorsSelect distance={distance} setDistance={setDistance} />
+        }
       </div>
     </aside>
   );
