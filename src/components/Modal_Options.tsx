@@ -34,6 +34,12 @@ interface modalProps {
   setTarget: React.Dispatch<React.SetStateAction<Target>>;
   distance: number;
   setDistance: React.Dispatch<React.SetStateAction<number>>;
+  windage: number;
+  setWindage: React.Dispatch<React.SetStateAction<number>>;
+  elevation: number;
+  setElevation: React.Dispatch<React.SetStateAction<number>>;
+  base: number;
+  setBase: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function Modal_Options({
@@ -45,6 +51,11 @@ export default function Modal_Options({
   setTarget,
   distance,
   setDistance,
+  windage,
+  setWindage,
+  elevation,
+  setElevation,
+  base, setBase
 }: modalProps) {
 
   const [showOption, setShowOption] = useState<String>("target")
@@ -80,8 +91,8 @@ export default function Modal_Options({
         {showOption === "target" ? 
         <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget}/> :
         showOption === "weapon" ? 
-        <Modal_Options_WeaponSelect weaponList={weaponListSorted} setWeapon={setWeapon} /> :
-        <Modal_Options_FactorsSelect distance={distance} setDistance={setDistance} />
+        <Modal_Options_WeaponSelect base={base} windage={windage} elevation={elevation} weaponList={weaponListSorted} setWeapon={setWeapon} /> :
+        <Modal_Options_FactorsSelect distance={distance} setDistance={setDistance} windage={windage} setWindage={setWindage} elevation={elevation} setElevation={setElevation} base={base} setBase={setBase}/>
         }
       </div>
     </aside>

@@ -27,6 +27,7 @@ export default function Controller({
   distance,
   manualHitPosition,
 }: controllerProps) {
+  console.log(weapon)
   const distanceFactor: number = distance / weapon.base;
 
   const windageAdjust: number = Math.round(

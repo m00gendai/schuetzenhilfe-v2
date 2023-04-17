@@ -54,9 +54,30 @@ function App() {
     ? (initialDistance = JSON.parse(getInitialDistance))
     : (initialDistance = 300);
 
+    const getInitialCustomWindage = localStorage.getItem("Schützenhilfe_Seite");
+  let initialCustomWindage;
+  typeof getInitialCustomWindage === "string"
+    ? (initialCustomWindage = JSON.parse(getInitialCustomWindage))
+    : (initialCustomWindage = 1);
+
+    const getInitialCustomElevation = localStorage.getItem("Schützenhilfe_Höhe");
+  let initialCustomElevation;
+  typeof getInitialCustomElevation === "string"
+    ? (initialCustomElevation = JSON.parse(getInitialCustomElevation))
+    : (initialCustomElevation = 1);
+
+    const getInitialCustomBase = localStorage.getItem("Schützenhilfe_Referenz");
+  let initialCustomBase;
+  typeof getInitialCustomBase === "string"
+    ? (initialCustomBase = JSON.parse(getInitialCustomBase))
+    : (initialCustomBase = 25);
+
   const [target, setTarget] = useState<Target>(initialTarget);
   const [weapon, setWeapon] = useState<Weapon>(initialWeapon);
   const [distance, setDistance] = useState<number>(initialDistance);
+  const [windage, setWindage] = useState<number>(initialCustomWindage);
+  const [elevation, setElevation] = useState<number>(initialCustomWindage);
+  const [base, setBase] = useState<number>(initialCustomBase)
   const [cursorPosition, setCursorPosition] = useState<number[]>([999, 999]);
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([
     999, 999,
@@ -99,6 +120,12 @@ function App() {
           setTarget={setTarget}
           distance={distance}
           setDistance={setDistance}
+          windage={windage}
+          setWindage={setWindage}
+          elevation={elevation}
+          setElevation={setElevation}
+          base={base}
+          setBase={setBase}
         />
       ) : null}
       {showHelp ? (

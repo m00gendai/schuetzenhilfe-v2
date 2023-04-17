@@ -12,6 +12,9 @@ interface Weapon {
 interface modalProps{
   weaponList: Weapon[];
   setWeapon: React.Dispatch<React.SetStateAction<Weapon>>
+  base: number;
+  windage: number;
+  elevation: number;
 }
 
 interface Spoilers{
@@ -21,21 +24,23 @@ interface Spoilers{
 }
 
 const spoilers: Spoilers[] = [
+  {prefix: "I", name: "Individuell", visible: false,},
   {prefix: "G", name: "Gewehre", visible: false,},
   {prefix: "D", name: "Gewehrdiopter", visible: false,},
   {prefix: "P", name: "Pistolen", visible: false,},
   {prefix: "V", name: "Pistolenvisiere", visible: false,},
+  {prefix: "LG", name: "Luftgewehrdiopter", visible: false,},
   {prefix: "LP", name: "Luftpistolen", visible: false,},
   {prefix: "ZF", name: "Zielfernrohre", visible: false,},
 ]
 
 
-export default function Modal_Options_WeaponSelect({weaponList, setWeapon}:modalProps){
+export default function Modal_Options_WeaponSelect({weaponList, setWeapon, base, windage, elevation}:modalProps){
   
     return(
       <div className={s.content}>
         {spoilers.map(spoiler=>{
-          return <Modal_Options_WeaponSelect_Weapon key={spoiler.prefix} spoiler={spoiler} weaponList={weaponList} setWeapon={setWeapon}/>
+          return <Modal_Options_WeaponSelect_Weapon base={base} windage={windage} elevation={elevation} key={spoiler.prefix} spoiler={spoiler} weaponList={weaponList} setWeapon={setWeapon}/>
         })}
         
         </div>
