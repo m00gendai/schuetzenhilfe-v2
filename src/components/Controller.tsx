@@ -36,11 +36,13 @@ export default function Controller({
     (100 - manualHitPosition[1]) / (weapon.elevationStep * 2) / distanceFactor
   );
 
+  const prefix: string[] = weapon.designation.split(" - ")
+
   return (
     <section className={s.container}>
       <h1
         className={s.title}
-      >{`${weapon.designation}\n${distance}m\n${target.name}`}</h1>
+      >{`${prefix[1]}\n${distance}m\n${target.name}`}</h1>
       {manualHitPosition[0] === 999 ? (
         <div className={s.placeholder}>
           Auf die Scheibe tippen, um den Treffer festzulegen!
