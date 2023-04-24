@@ -123,7 +123,7 @@ export const weaponList: Weapon[] = [
     base: 10,
   },
   {
-    designation: "I - Individuelle Verstellschritte (unter 📐 festlegen)",
+    designation: "I - Individuelle Verstellschritte",
     windageStep: 0,
     elevationStep: 0,
     base: 0,
