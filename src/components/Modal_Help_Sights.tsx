@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import CloseIcon from "@mui/icons-material/Close";
-import WestIcon from "@mui/icons-material/West";
+import { CancelButton, ArrowLeftButton } from "../buttons";
 
 import Modal_Help_Sights_Stgw90 from "./Modal_Help_Sights_Stgw90";
 
@@ -26,10 +25,10 @@ export default function Modal_Help_Sights({
         <>
           <div className={s.buttonRow}>
             <button className={s.back} onClick={() => setChapter("main")}>
-              <WestIcon />
+              <ArrowLeftButton />
             </button>
             <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
-              <CloseIcon />
+              <CancelButton />
             </button>
           </div>
           <div className={s.content}>

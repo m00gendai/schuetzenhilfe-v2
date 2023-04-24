@@ -73,17 +73,6 @@
     box-shadow: 5px 5px 0px 0px black;
 }
 
-.chapter:hover{
-    cursor: pointer;
-    background: blue;
-    color: white;
-}
-
-.chapter:active{
-    transform:translate(3px, 3px);
-    box-shadow: 2px 2px 0px 0px black;
-}
-
 .chapterTitle{
     margin: 0;
     height: 100%;

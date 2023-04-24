@@ -1,5 +1,4 @@
-import CloseIcon from "@mui/icons-material/Close";
-import WestIcon from "@mui/icons-material/West";
+import { CancelButton, ArrowLeftButton } from "../buttons";
 
 import s from "../styles/Modal_Help_About.module.css";
 
@@ -21,10 +20,10 @@ export default function Modal_Help_About({
     <>
       <div className={s.buttonRow}>
         <button className={s.back} onClick={() => setChapter("main")}>
-          <WestIcon />
+          <ArrowLeftButton />
         </button>
         <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
-          <CloseIcon />
+          <CancelButton />
         </button>
       </div>
       <div className={s.content}>

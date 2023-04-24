@@ -4,7 +4,7 @@ import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
 import Modal_Help_About from "./Modal_Help_About";
 
-import CloseIcon from "@mui/icons-material/Close";
+import { CancelButton, CrosshairButton, SherlockButton, UncertainButton } from "../buttons";
 
 import s from "../styles/Modal_Help.module.css";
 
@@ -22,7 +22,7 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
         {chapter === "main" ? (
           <>
             <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
-              <CloseIcon />
+              <CancelButton />
             </button>
             <div className={s.content}>
               <div
@@ -30,15 +30,15 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
                 onClick={() => setChapter("mode_controller")}
               >
                 <p className={s.chapterTitle}>Modus Zeiger</p>
-                <p className={s.arrow}>→</p>
+                <CrosshairButton />
               </div>
               <div className={s.chapter} onClick={() => setChapter("sights")}>
                 <p className={s.chapterTitle}>Visierverstellungen</p>
-                <p className={s.arrow}>→</p>
+                <p className={s.arrow}><UncertainButton /></p>
               </div>
               <div className={s.chapter} onClick={() => setChapter("about")}>
                 <p className={s.chapterTitle}>Über</p>
-                <p className={s.arrow}>→</p>
+                <p className={s.arrow}><SherlockButton /></p>
               </div>
             </div>
           </>

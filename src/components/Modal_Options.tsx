@@ -1,6 +1,7 @@
-import CloseIcon from "@mui/icons-material/Close";
-
 import s from "../styles/Modal_Options.module.css";
+
+import {TargetButton, RulerButton, FalButton, LugerButton, CancelButton} from "../buttons"
+
 
 import {useState} from "react"
 
@@ -81,12 +82,12 @@ export default function Modal_Options({
           className={s.close}
           onClick={() => setShowOptions(!showOptions)}
         >
-          <CloseIcon />
+          <CancelButton />
         </button>
         <div className={s.optionSelect}>
-          <button onClick={()=>setShowOption("target")}>🞋</button>
-          <button onClick={()=>setShowOption("weapon")}>🔫</button>
-          <button onClick={()=>setShowOption("factors")}>📐</button>
+          <button onClick={()=>setShowOption("target")}><TargetButton /></button>
+          <button onClick={()=>setShowOption("weapon")}><FalButton /><LugerButton /></button>
+          <button onClick={()=>setShowOption("factors")}><RulerButton /></button>
         </div>
         {showOption === "target" ? 
         <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget}/> :

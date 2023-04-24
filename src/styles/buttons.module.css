@@ -1,0 +1,8 @@
+.icon{
+    position: relative;
+    height: 90%;
+}
+
+.invertColor{
+    filter:invert(100%);
+}
