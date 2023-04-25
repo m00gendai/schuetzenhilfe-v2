@@ -99,7 +99,7 @@ export const weaponList: Weapon[] = [
     base: 91.44,
   },
   {
-    designation: "ZF - 1 MRAD",
+    designation: "ZF - 1/10 MRAD",
     windageStep: 1.0,
     elevationStep: 1.0,
     base: 100,
