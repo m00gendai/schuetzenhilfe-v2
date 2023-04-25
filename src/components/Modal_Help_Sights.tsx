@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import { CancelButton, ArrowLeftButton } from "../buttons";
 
-import Modal_Help_Sights_Stgw90 from "./Modal_Help_Sights_Stgw90";
+import Modal_Help_Sights_Weapon from "./Modal_Help_Sights_Stgw90";
+import { sightsHelp } from "../sightsHelp";
 
 import s from "../styles/Modal_Help_Sights.module.css";
 
@@ -12,12 +13,32 @@ interface modalProps {
   setChapter: React.Dispatch<React.SetStateAction<String>>;
 }
 
+interface Sight {
+  weapon: string;
+  shotLeft: string;
+  shotRight: string;
+  shotBelow: string;
+  shotAbove: string;
+}
+
 export default function Modal_Help_Sights({
   showHelp,
   setShowHelp,
   setChapter,
 }: modalProps) {
   const [subchapter, setSubchapter] = useState<String>("sights");
+  const [sight, setSight] = useState<Sight>({
+    weapon: "Sturmgewehr 90",
+    shotLeft: "Uhrzeigersinn",
+    shotRight: "Gegenuhrzeigersinn",
+    shotBelow: "Uhrzeigersinn",
+    shotAbove: "Gegenuhrzeigersinn",
+  },)
+
+  function handleSight(sight: Sight){
+    setSubchapter("sights_weapon")
+    setSight(sight)
+  }
 
   return (
     <>
@@ -32,20 +53,24 @@ export default function Modal_Help_Sights({
             </button>
           </div>
           <div className={s.content}>
-            <div
-              className={s.chapter}
-              onClick={() => setSubchapter("sights_stgw90")}
-            >
-              <p className={s.chapterTitle}>Sturmgewehr 90</p>
-              <p className={s.arrow}>→</p>
-            </div>
+            {sightsHelp.map(sight =>{
+            return (<div
+            className={s.chapter}
+            onClick={() => handleSight(sight)}
+          >
+            <p className={s.chapterTitle}>{sight.weapon}</p>
+            <p className={s.arrow}>→</p>
+          </div>)
+})}
+          
           </div>
         </>
-      ) : subchapter === "sights_stgw90" ? (
-        <Modal_Help_Sights_Stgw90
+      ) : subchapter === "sights_weapon" ? (
+        <Modal_Help_Sights_Weapon
           showHelp={showHelp}
           setShowHelp={setShowHelp}
           setSubchapter={setSubchapter}
+          sight={sight}
         />
       ) : null}
     </>
