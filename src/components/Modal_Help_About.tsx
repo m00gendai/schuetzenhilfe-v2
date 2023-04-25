@@ -32,6 +32,7 @@ export default function Modal_Help_About({
           <a href="https://paypal.me/schussfreude?country.x=CH&locale.x=de_DE" target="_blank">PayPal</a>
           <a href="https://www.patreon.com/schussfreude" target="_blank">Patreon</a>
           <a href="https://github.com/m00gendai/schuetzenhilfe-v2" target="_blank">GitHub</a>
+          <a href="https://trello.com/b/7QbKeNiE/schusshilfe" target="_blank">Trello</a>
           <a href="https://ch.linkedin.com/in/marcel-weber-3a05a61bb" target="_blank">LinkedIn</a>
           <a href="https://www.schussfreude.ch" target="_blank">schussfreude.ch</a>
           <a href="https://www.waffenforum.ch" target="_blank">waffenforum.ch</a>
