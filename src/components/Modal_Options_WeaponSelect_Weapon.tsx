@@ -69,8 +69,8 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
       ]
       
     return(
-        <div className={s.itemGrid}>
-            <h2 className={s.title}>{spoiler.name}</h2>
+        <details className={s.itemGrid}>
+            <summary className={s.title}>{spoiler.name}</summary>
             <div className={s.itemGridInner}>            
             {weaponList.map((weapon) => {
                 const prefix = weapon.designation.split(" - ")
@@ -84,6 +84,6 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
                 }
 })}
               </div>
-          </div>
+          </details>
     )
 }

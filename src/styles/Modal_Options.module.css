@@ -129,10 +129,9 @@
 .title{
     position: relative;
     margin: 0;
-    padding: 0;
+    padding: 0.5rem;
     font-size: 1rem;
     font-family: "Arial";
-    margin: 0 0 0.5rem 0;
 }
 .itemGrid{
     position: relative;
@@ -148,9 +147,10 @@
 
 .itemGridInner{
     position: relative;
-    width: 90%;
+    width: auto;
+    padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     grid-gap: 1rem;
 }
 

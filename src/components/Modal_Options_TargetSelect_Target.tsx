@@ -39,8 +39,8 @@ interface Target {
       }
 
     return(
-        <div className={s.itemGrid}>
-            <h2 className={s.title} >{spoiler.long}</h2>
+        <details className={s.itemGrid}>
+            <summary className={s.title} >{spoiler.long}</summary>
             <div className={s.itemGridInner}>
               {targetList.map((target) => {
                 if (target.type === spoiler.name) {
@@ -60,6 +60,6 @@ interface Target {
                 }
               })}
             </div>
-          </div>
+          </details>
     )
 }
