@@ -10,6 +10,7 @@ import arrowLeft from "./assets/sideswipe.svg"
 import crosshair from "./assets/crosshair.svg"
 import uncertain from "./assets/uncertainty.svg"
 import sherlock from "./assets/sherlock-holmes.svg"
+import magnify from "./assets/magnifying-glass.svg"
 
 export const TargetButton = () => <img src={targets} className={s.icon} />
 
@@ -32,4 +33,6 @@ export const CrosshairButton = () => <img src={crosshair} className={`${s.icon} 
 export const UncertainButton = () => <img src={uncertain} className={`${s.icon} ${s.invertColor}`} />
 
 export const SherlockButton = () => <img src={sherlock} className={`${s.icon} ${s.invertColor}`} />
+
+export const ZoomButton = () => <img src={magnify} className={`${s.icon} `} />
 
