@@ -41,6 +41,7 @@ export default function Modal_Help_About({
           <span>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
           <a href="mailto:info@mrweber.ch">info@mrweber.ch</a>
         </p>
+        <p className={s.copy}>Version Alpha 5.0.0</p>
       </div>
     </>
   );

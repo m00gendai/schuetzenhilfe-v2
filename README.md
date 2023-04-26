@@ -1,18 +1,20 @@
 # Schützenhilfe
 
 Schützenhilfe ist eine Applikation zur Unterstützung eines Sportschützen, mit Fokus auf den Schweizer Schiesssport.
-Es ist als Webapplikation entwickelt und für Mobilgeräte im Portrait-Modus optimiert.
+Es ist als Webapplikation (Progressive Web App) entwickelt und für Mobilgeräte im Portrait-Modus optimiert.
 
 ## Gliederung
 
 Die Hauptansicht ist in drei Teilbereiche gegliedert:
 - Zielbild
   - Stellt die momentan ausgewählte Zielscheibe so dar, dass dessen Trefferzentrum (nicht Scheibenzentrum!) mittig ist
-  - Stellt bei antippen Treffer in 10er-Wertung dar
+  - Stellt bei antippen Treffer in 10er-Wertung oder Trefferkreuz dar
 - Optionsbereich
-  - Enthält die Funktionen Optionsmenü / Trefferanzeige 100er-Wertung / Hilfemenü
-  - Die Funktion optionsmenü öffnet das Optionsmenü
+  - Enthält die Funktionen Optionsmenü / Zielvergrösserung / Trefferanzeige 100er-Wertung / Trefferanzeigen / Hilfemenü
+  - Die Funktion Optionsmenü öffnet das Optionsmenü
+  - Die Funktion Zielvergrösserung vergrössert das Scheibenbild in zwei Stufen (analog SIUS Monitore)
   - Die Trefferanzeige zeigt nach Antippen der Scheibe den Treffer in 100er-Wertung an
+  - Die Funktion Trefferanzeigen wechselt zwischen zwei verschiedenen Trefferbildern
   - Die Funktion Hilfemenü öffnet dsa Hilfemenü
 - Aktionsbereich
   - Zeigt ausgewählte Waffe, eingestellte Distanz, ausgewähltes Scheibenbild
@@ -31,6 +33,9 @@ Das Optionsmenü gliedert sich in drei Bereiche:
   - Die Waffen sind nach Typ geordnet
 - Faktorenauswahl
   - Die gewünschte Distanz in Meter kann eingegeben werden
+  - Die Referenzdistanz für individuelle Angaben kann eingegeben werden
+  - Die individuelle Seitenverstellung kann eingegeben werden
+  - Die individuelle Höhenverstellung kann eingegeben werden
 
 ### Hilfemenü
 
@@ -44,7 +49,9 @@ Das Hilfemenü gliedert sich in folgende Bereiche:
     
 ## Technisch
 
-Die Applikation ist in (funktionalem) React 18 mit Typescript und Module-CSS geschrieben und nutzt Vite als Build-Tool.
-Teilweise werden Material UI Icons verwendet.
+Die Applikation ist in (funktionalem) React 18 mit Typescript und Module-CSS geschrieben und nutzt Vite als Build-Tool sowie
+das Vite Plugin ```vite-plugin-pwa``` für das Handhaben der PWA-Einstellungen.
+Als Icons werden React Game-Icons verwendet.
 Details siehe ```package.json```.
 Die Applikation ist als komplett statischer Export auf jedem Webserver lauffähig.
+Ebenfalls ist die Applikation als PWA auf Mobilgeräten installierbar.
