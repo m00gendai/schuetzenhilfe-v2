@@ -15,5 +15,6 @@
     align-items: center;
     font-size: 1.25rem;
     user-select: none;
+    transform-origin: left top;
     transform: translate(-50%, -50%);
 }

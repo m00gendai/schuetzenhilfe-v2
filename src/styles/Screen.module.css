@@ -21,6 +21,9 @@
     background: blue;
     color: white;
     font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .score {
