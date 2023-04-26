@@ -26,6 +26,8 @@ interface Weapon {
 }
 
 function App() {
+
+  // GET TARGET FROM LOCALSTORAGE OR SET DEFAULT
   const getInitialTarget = localStorage.getItem("Schützenhilfe_Ziel");
   let initialTarget;
   typeof getInitialTarget === "string"
@@ -37,6 +39,7 @@ function App() {
         type: "300m Rifle",
       });
 
+  // GET WEAPON FROM LOCALSTORAGE OR SET DEFAULT
   const getInitialWeapon = localStorage.getItem("Schützenhilfe_Waffe");
   let initialWeapon;
   typeof getInitialWeapon === "string"
@@ -48,43 +51,48 @@ function App() {
         base: 300,
       });
 
+  // GET DISTANCE FROM LOCALSTORAGE OR SET DEFAULT
   const getInitialDistance = localStorage.getItem("Schützenhilfe_Distanz");
   let initialDistance;
   typeof getInitialDistance === "string"
     ? (initialDistance = JSON.parse(getInitialDistance))
     : (initialDistance = 300);
 
+  // GET WINDAGE FROM LOCALSTORAGE OR SET DEFAULT
     const getInitialCustomWindage = localStorage.getItem("Schützenhilfe_Seite");
   let initialCustomWindage;
   typeof getInitialCustomWindage === "string"
     ? (initialCustomWindage = JSON.parse(getInitialCustomWindage))
     : (initialCustomWindage = 1);
 
+  // GET ELEVATION FROM LOCALSTORAGE OR SET DEFAULT
     const getInitialCustomElevation = localStorage.getItem("Schützenhilfe_Höhe");
   let initialCustomElevation;
   typeof getInitialCustomElevation === "string"
     ? (initialCustomElevation = JSON.parse(getInitialCustomElevation))
     : (initialCustomElevation = 1);
 
+  // GET REFERENCE DISTANCE FROM LOCALSTORAGE OR SET DEFAULT
     const getInitialCustomBase = localStorage.getItem("Schützenhilfe_Referenz");
   let initialCustomBase;
   typeof getInitialCustomBase === "string"
     ? (initialCustomBase = JSON.parse(getInitialCustomBase))
     : (initialCustomBase = 25);
 
-  const [target, setTarget] = useState<Target>(initialTarget);
-  const [weapon, setWeapon] = useState<Weapon>(initialWeapon);
-  const [distance, setDistance] = useState<number>(initialDistance);
-  const [windage, setWindage] = useState<number>(initialCustomWindage);
-  const [elevation, setElevation] = useState<number>(initialCustomElevation);
-  const [base, setBase] = useState<number>(initialCustomBase)
-  const [cursorPosition, setCursorPosition] = useState<number[]>([999, 999]);
+  const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
+  const [weapon, setWeapon] = useState<Weapon>(initialWeapon); // assigns the selected weapon
+  const [distance, setDistance] = useState<number>(initialDistance); // assigns the selected distance
+  const [windage, setWindage] = useState<number>(initialCustomWindage); // assigns the set custom windage
+  const [elevation, setElevation] = useState<number>(initialCustomElevation); // assigns the set custom elevation
+  const [base, setBase] = useState<number>(initialCustomBase) // assigns the set custom reference distance
+  const [cursorPosition, setCursorPosition] = useState<number[]>([999, 999]); // assigns x/y coordinates of cursor click in target container
   const [manualHitPosition, setManualHitPosition] = useState<number[]>([
     999, 999,
-  ]);
-  const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>(0);
-  const [showOptions, setShowOptions] = useState<boolean>(false);
-  const [showHelp, setShowHelp] = useState<boolean>(false);
+  ]); // assigns x/y coordinates of cursor click in target container in reference to its imposed dimensions (usuall-100 to 100)
+  const [calculatedHitPosition, setCalculatedHitPosition] = useState<number>(0); // This is the actual hit value in reference to its distance from center 100
+  const [showOptions, setShowOptions] = useState<boolean>(false); // toggles Options modal
+  const [showHelp, setShowHelp] = useState<boolean>(false); // toggles Help modal
+  const [zoom, setZoom] = useState<number>(1) // Sets target zoom in steps
 
   return (
     <main>
@@ -96,6 +104,7 @@ function App() {
         setCalculatedHitPosition={setCalculatedHitPosition}
         cursorPosition={cursorPosition}
         setCursorPosition={setCursorPosition}
+        zoom={zoom}
       />
       <Screen
         hit={calculatedHitPosition}
@@ -103,6 +112,8 @@ function App() {
         setShowOptions={setShowOptions}
         showHelp={showHelp}
         setShowHelp={setShowHelp}
+        zoom={zoom}
+        setZoom={setZoom}
       />
       <Controller
         weapon={weapon}
