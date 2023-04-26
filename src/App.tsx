@@ -93,6 +93,7 @@ function App() {
   const [showOptions, setShowOptions] = useState<boolean>(false); // toggles Options modal
   const [showHelp, setShowHelp] = useState<boolean>(false); // toggles Help modal
   const [zoom, setZoom] = useState<number>(1) // Sets target zoom in steps
+  const [reticle, setReticle] = useState<number>(1) // Sets hit on target variant
 
   return (
     <main>
@@ -105,6 +106,7 @@ function App() {
         cursorPosition={cursorPosition}
         setCursorPosition={setCursorPosition}
         zoom={zoom}
+        reticle={reticle}
       />
       <Screen
         hit={calculatedHitPosition}
@@ -114,6 +116,8 @@ function App() {
         setShowHelp={setShowHelp}
         zoom={zoom}
         setZoom={setZoom}
+        reticle={reticle}
+        setReticle={setReticle}
       />
       <Controller
         weapon={weapon}

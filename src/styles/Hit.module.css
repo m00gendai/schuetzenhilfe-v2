@@ -1,4 +1,4 @@
-.container{
+.circle{
     position: absolute;
     width: 2rem;
     aspect-ratio: 1/1;
@@ -14,6 +14,24 @@
     justify-content: center;
     align-items: center;
     font-size: 1.25rem;
+    user-select: none;
+    transform-origin: left top;
+    transform: translate(-50%, -50%);
+}
+
+.x{
+    position: absolute;
+    width: 4rem;
+    aspect-ratio: 1/1;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    /* following is from the codepen mentioned in https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element */
+    filter: brightness(0%) saturate(100%) invert(14%) sepia(94%) saturate(6829%) hue-rotate(359deg) brightness(94%) contrast(113%);
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     user-select: none;
     transform-origin: left top;
     transform: translate(-50%, -50%);
