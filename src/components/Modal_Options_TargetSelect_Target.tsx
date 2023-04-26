@@ -22,7 +22,7 @@ interface Target {
   
   export default function Modal_Options_TargetSelect_Target({spoiler, targetList, setTarget}:modalProps){
     function assignTarget(event: any) {
-        const targetImages = document.querySelectorAll(`.${s.targetImage}`);
+        const targetImages = document.querySelectorAll(`.${s.targetImageContainer}`);
         for (let target of targetList) {
           if (target.designation === event.currentTarget.id) {
             setTarget(target);

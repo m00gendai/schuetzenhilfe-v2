@@ -31,7 +31,7 @@ interface Spoilers{
 export default function Modal_Options_WeaponSelect_weapon({base, windage, elevation, spoiler, weaponList, setWeapon}:modalProps){
 
     function assignWeapon(event: any) {
-        const weaponImages = document.querySelectorAll(`.${s.weaponImage}`);
+        const weaponImages = document.querySelectorAll(`.${s.weaponImageContainer}`);
         for (let weapon of weaponList) {
           const prefix: string[] = weapon.designation.split(" - ")
           if (weapon.designation === event.currentTarget.id) {

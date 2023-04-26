@@ -37,4 +37,5 @@ main{
 
 .active{
     outline: 5px solid blue;
+    border: none;
 }
