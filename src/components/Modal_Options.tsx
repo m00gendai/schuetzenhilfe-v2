@@ -80,6 +80,7 @@ export default function Modal_Options({
       <div className={s.modal}>
         <button
           className={s.close}
+          name="schliessen"
           onClick={() => setShowOptions(!showOptions)}
         >
           <CancelButton />

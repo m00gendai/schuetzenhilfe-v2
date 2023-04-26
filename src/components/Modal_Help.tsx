@@ -21,7 +21,7 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
       <div className={s.modal}>
         {chapter === "main" ? (
           <>
-            <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
+            <button className={s.close} name="schliessen" onClick={() => setShowHelp(!showHelp)}>
               <CancelButton />
             </button>
             <div className={s.content}>

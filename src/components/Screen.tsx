@@ -18,11 +18,11 @@ export default function Screen({
 }: screenProps) {
   return (
     <section className={s.container}>
-      <button className={s.button} onClick={() => setShowOptions(!showOptions)}>
+      <button className={s.button} name="Einstellungen" onClick={() => setShowOptions(!showOptions)}>
         <SettingsButton />
       </button>
       <div className={s.score}>{hit < 0 ? "0" : hit}</div>
-      <button className={s.button} onClick={() => setShowHelp(!showHelp)}>
+      <button className={s.button} name="Hilfe" onClick={() => setShowHelp(!showHelp)}>
         <RulesButton />
       </button>
     </section>

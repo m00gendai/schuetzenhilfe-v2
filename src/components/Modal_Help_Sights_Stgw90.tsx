@@ -26,10 +26,10 @@ export default function Modal_Help_Sights_Weapon({
   return (
     <>
       <div className={s.buttonRow}>
-        <button className={s.back} onClick={() => setSubchapter("sights")}>
+        <button className={s.back} name="zurück" onClick={() => setSubchapter("sights")}>
           <ArrowLeftButton />
         </button>
-        <button className={s.close} onClick={() => setShowHelp(!showHelp)}>
+        <button className={s.close} name="schliessen" onClick={() => setShowHelp(!showHelp)}>
           <CancelButton />
         </button>
       </div>
