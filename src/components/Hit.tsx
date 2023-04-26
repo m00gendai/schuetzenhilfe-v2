@@ -2,14 +2,17 @@ import s from "../styles/Hit.module.css";
 
 import {useRef} from "react"
 
+import crosshair from "../assets/crosshair.svg"
+
 interface hitProps {
   score: number;
   y: number;
   x: number;
   zoom: number;
+  reticle: number;
 }
 
-export default function Hit({ score, y, x, zoom }: hitProps) {
+export default function Hit({ score, y, x, zoom, reticle }: hitProps) {
 
   const hitElement = useRef<HTMLDivElement>(null)
 
@@ -23,8 +26,8 @@ export default function Hit({ score, y, x, zoom }: hitProps) {
     hitElement.current.style.transform = 'scale(0.25,0.25) translate(-50%, -50%)';
   }
   return (
-    <div className={s.container} style={{ top: `${y}px`, left: `${x}px` }} ref={hitElement}>
-      {score < 0 ? "0" : Math.ceil(score / 10)}
+    <div className={`${reticle === 1 ? s.circle : s.x}`} style={{ top: `${y}px`, left: `${x}px` }} ref={hitElement}>
+      { reticle === 1 ? score < 0 ? "0" : Math.ceil(score / 10) : <img src={crosshair}/>}
     </div>
   );
 }

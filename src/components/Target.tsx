@@ -20,6 +20,7 @@ interface targetProps {
   cursorPosition: number[];
   setCursorPosition: React.Dispatch<React.SetStateAction<number[]>>;
   zoom: number;
+  reticle: number;
 }
 
 export default function Target({
@@ -31,6 +32,7 @@ export default function Target({
   cursorPosition,
   setCursorPosition,
   zoom,
+  reticle,
 }: targetProps) {
 
   const targetElement = useRef<HTMLElement>(null)
@@ -84,6 +86,7 @@ export default function Target({
           y={cursorPosition[1]}
           x={cursorPosition[0]}
           zoom={zoom}
+          reticle={reticle}
         />
       ) : null}
       <div

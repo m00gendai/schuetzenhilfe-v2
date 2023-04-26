@@ -1,4 +1,4 @@
-import {SettingsButton, RulesButton, ZoomButton} from "../buttons"
+import {SettingsButton, RulesButton, ZoomButton, HitSwitchButton} from "../buttons"
 import s from "../styles/Screen.module.css";
 
 interface screenProps {
@@ -9,6 +9,8 @@ interface screenProps {
   setShowHelp: React.Dispatch<React.SetStateAction<boolean>>;
   zoom: number;
   setZoom: React.Dispatch<React.SetStateAction<number>>;
+  reticle: number;
+  setReticle: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function Screen({
@@ -18,7 +20,9 @@ export default function Screen({
   showHelp,
   setShowHelp,
   zoom,
-  setZoom
+  setZoom,
+  reticle,
+  setReticle,
 }: screenProps) {
   return (
     <section className={s.container}>
@@ -29,6 +33,9 @@ export default function Screen({
         <ZoomButton />
       </button>
       <div className={s.score}>{hit < 0 ? "0" : hit}</div>
+      <button className={s.button} name="Trefferanzeige wechseln" onClick={()=>setReticle(reticle === 2 ? 1 : reticle+1)} style={{margin: "0 0.25rem 0 0"}} >
+        <HitSwitchButton />
+      </button>
       <button className={s.button} name="Hilfe" onClick={() => setShowHelp(!showHelp)}>
         <RulesButton />
       </button>
