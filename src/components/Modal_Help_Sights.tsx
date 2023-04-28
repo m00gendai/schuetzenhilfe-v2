@@ -1,11 +1,9 @@
 import { useState } from "react";
-
-import { CancelButton, ArrowLeftButton } from "../buttons";
-
-import Modal_Help_Sights_Weapon from "./Modal_Help_Sights_Stgw90";
+import{ GiCancel, GiSideswipe, GiFnFal } from "react-icons/gi"
+import Modal_Help_Sights_Weapon from "./Modal_Help_Sights_Weapon";
 import { sightsHelp } from "../sightsHelp";
 
-import s from "../styles/Modal_Help_Sights.module.css";
+import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps {
   showHelp: boolean;
@@ -44,22 +42,23 @@ export default function Modal_Help_Sights({
     <>
       {subchapter === "sights" ? (
         <>
-          <div className={s.buttonRow}>
-            <button className={s.back} name="zurück" onClick={() => setChapter("main")}>
-              <ArrowLeftButton />
-            </button>
-            <button className={s.close} name="schliessen" onClick={() => setShowHelp(!showHelp)}>
-              <CancelButton />
-            </button>
-          </div>
-          <div className={s.content}>
+          <div className={modal.buttonRow}>
+        <button className={modal.backButton} title="zurück" onClick={() => setChapter("main")}>
+          <GiSideswipe />
+        </button>
+        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
+          <GiCancel />
+        </button>
+      </div>
+          <div className={modal.content}>
+            <h1 className={modal.title}>Visierverstellungen</h1>
             {sightsHelp.map(sight =>{
             return (<div
-            className={s.chapter}
+            className={modal.chapter}
             onClick={() => handleSight(sight)}
           >
-            <p className={s.chapterTitle}>{sight.weapon}</p>
-            <p className={s.arrow}>→</p>
+            <p className={modal.chapterTitle}>{sight.weapon}</p>
+            <p className={modal.chapterIcon}><GiFnFal/></p>
           </div>)
 })}
           

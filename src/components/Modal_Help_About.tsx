@@ -1,6 +1,7 @@
-import { CancelButton, ArrowLeftButton } from "../buttons";
+import { GiCancel, GiSideswipe } from "react-icons/gi"
 
 import s from "../styles/Modal_Help_About.module.css";
+import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps {
   showHelp: boolean;
@@ -18,16 +19,16 @@ export default function Modal_Help_About({
 
   return (
     <>
-      <div className={s.buttonRow}>
-        <button className={s.back} name="zurück" onClick={() => setChapter("main")}>
-          <ArrowLeftButton />
+      <div className={modal.buttonRow}>
+        <button className={modal.backButton} title="zurück" onClick={() => setChapter("main")}>
+          <GiSideswipe />
         </button>
-        <button className={s.close} name="schliessen" onClick={() => setShowHelp(!showHelp)}>
-          <CancelButton />
+        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
+          <GiCancel />
         </button>
       </div>
-      <div className={s.content}>
-        <h1 className={s.title}>Über</h1>
+      <div className={modal.content}>
+        <h1 className={modal.title}>Über</h1>
         <div className={s.links}>
           <a href="https://paypal.me/schussfreude?country.x=CH&locale.x=de_DE" target="_blank">PayPal</a>
           <a href="https://www.patreon.com/schussfreude" target="_blank">Patreon</a>
@@ -37,10 +38,10 @@ export default function Modal_Help_About({
           <a href="https://www.schussfreude.ch" target="_blank">schussfreude.ch</a>
           <a href="https://www.waffenforum.ch" target="_blank">waffenforum.ch</a>
         </div>
-        <p className={s.copy}>
+        <div className={s.copy}>
           <span>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
           <a href="mailto:info@mrweber.ch">info@mrweber.ch</a>
-        </p>
+        </div>
         <p className={s.copy}>Version Alpha 5.0.0</p>
       </div>
     </>
