@@ -1,4 +1,5 @@
 import s from "../styles/Modal_Options.module.css";
+import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps{
     distance: number;
@@ -14,11 +15,11 @@ interface modalProps{
 export default function Modal_Options_FactorsSelect({distance, setDistance, windage, setWindage, elevation, setElevation, base, setBase}:modalProps){
 
     function assignDistance(event: any) {
-        setDistance(event.currentTarget.value);
+       setDistance(event.currentTarget.value);
         localStorage.setItem(
           "Schützenhilfe_Distanz",
           JSON.stringify(event.currentTarget.value)
-        );
+        );     
       }
 
       function assignCustomBase(event: any) {
@@ -46,7 +47,7 @@ export default function Modal_Options_FactorsSelect({distance, setDistance, wind
       }
 
     return(
-        <div className={s.contentInputs}>
+        <div className={modal.content}>
           <div className={s.item}>
             <h2 className={s.title}>Zieldistanz in Meter</h2>
             <input

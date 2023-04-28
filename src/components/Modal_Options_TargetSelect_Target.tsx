@@ -48,13 +48,13 @@ interface Target {
                     <div
                       onClick={(event: any) => assignTarget(event)}
                       key={target.name}
-                      className={s.targetImageContainer}
-                      id={`${target.designation}`}><div className={s.targetImage}
+                      className={s.imageContainer}
+                      id={`${target.designation}`}><div className={s.image}
                       style={{
                         backgroundImage: `url("${target.designation}.jpg")`,
                       }}
                     ></div>
-                      <span className={s.targetName}>{target.name}</span>
+                      <span className={s.name}>{target.name}</span>
                     </div>
                   );
                 }
