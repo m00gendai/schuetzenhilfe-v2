@@ -1,12 +1,9 @@
 main{
-    
-    
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
-    
 }
 
 @media screen and (orientation:landscape) {
@@ -38,4 +35,21 @@ main{
 .active{
     outline: 5px solid blue;
     border: none;
+}
+
+.closeButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    outline: none;
+    background: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    font-size: 2rem;
 }
