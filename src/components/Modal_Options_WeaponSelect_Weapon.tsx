@@ -76,9 +76,9 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
                 const prefix = weapon.designation.split(" - ")
                 if(prefix[0] == spoiler.prefix){
                             return (
-                                <div onClick={(event:any)=>assignWeapon(event)} key={weapon.designation} className={s.weaponImageContainer} id={`${weapon.designation}`}>
-                                  <div className={s.weaponImage} style={{backgroundImage: `url("/${prefix[1].replaceAll("/", "_")}.svg")` ? `url("/${prefix[1].replaceAll("/", "_")}.svg")` : `url("testbild.png")`}}></div>
-                                    <span className={s.weaponName}>{prefix[1]}</span>
+                                <div onClick={(event:any)=>assignWeapon(event)} key={weapon.designation} className={s.imageContainer} id={`${weapon.designation}`}>
+                                  <div className={s.image} style={{backgroundImage: `url("/${prefix[1].replaceAll("/", "_")}.svg")` ? `url("/${prefix[1].replaceAll("/", "_")}.svg")` : `url("testbild.png")`}}></div>
+                                    <span className={s.name}>{prefix[1]}</span>
                                 </div>
                             )
                          

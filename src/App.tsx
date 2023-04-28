@@ -4,10 +4,7 @@ import Controller from "./components/Controller";
 import Modal_Options from "./components/Modal_Options";
 import Modal_Help from "./components/Modal_Help";
 
-import React, { useState } from "react";
-
-import { targetList } from "./targetList";
-import { weaponList } from "./weaponList";
+import { useState } from "react";
 
 import "./styles/globals.css";
 

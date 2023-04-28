@@ -1,4 +1,4 @@
-import s from "../styles/Modal_Options.module.css"
+import modal from "../styles/Modal_Globals.module.css"
 
 import Modal_Options_TargetSelect_Target from "./Modal_Options_TargetSelect_Target"
 
@@ -34,7 +34,7 @@ const spoilers: Spoilers[] = [
 export default function Modal_Options_TargetSelect({targetList, setTarget}:modalProps){
 
     return(
-      <div className={s.content}>
+      <div className={modal.content}>
         {
           spoilers.map(spoiler =>{
             return <Modal_Options_TargetSelect_Target key={spoiler.name} spoiler={spoiler} targetList={targetList} setTarget={setTarget}/>

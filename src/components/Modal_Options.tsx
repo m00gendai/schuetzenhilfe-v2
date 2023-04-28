@@ -1,9 +1,9 @@
 import s from "../styles/Modal_Options.module.css";
+import modal from "../styles/Modal_Globals.module.css"
 
-import {TargetButton, RulerButton, FalButton, LugerButton, CancelButton} from "../buttons"
+import { GiArcheryTarget, GiCancel, GiFnFal, GiLuger, GiPencilRuler } from "react-icons/gi"
 
-
-import {useState} from "react"
+import { useState } from "react"
 
 import { weaponList } from "../weaponList";
 import { targetList } from "../targetList";
@@ -24,7 +24,6 @@ interface Target {
   distance: number;
   type: string;
 }
-
 
 interface modalProps {
   showOptions: boolean;
@@ -72,23 +71,22 @@ export default function Modal_Options({
     return x < y ? -1 : x > y ? 1 : 0;
   });
 
-  
-  
-  
   return (
-    <aside className={s.veil}>
-      <div className={s.modal}>
+    <aside className={modal.veil}>
+      <div className={modal.modal}>
+        <div className={modal.buttonRow}>
         <button
-          className={s.close}
-          name="schliessen"
+          className={modal.closeButton}
+          title="Optionsmenü schliessen"
           onClick={() => setShowOptions(!showOptions)}
         >
-          <CancelButton />
+          <GiCancel />
         </button>
+        </div>
         <div className={s.optionSelect}>
-          <button onClick={()=>setShowOption("target")}><TargetButton /></button>
-          <button onClick={()=>setShowOption("weapon")}><FalButton /><LugerButton /></button>
-          <button onClick={()=>setShowOption("factors")}><RulerButton /></button>
+          <button title="Zielscheibe wählen" onClick={()=>setShowOption("target")}><GiArcheryTarget /></button>
+          <button title="Optik wählen" onClick={()=>setShowOption("weapon")}><GiFnFal /><GiLuger /></button>
+          <button title="Einstellungen vornehmen" onClick={()=>setShowOption("factors")}><GiPencilRuler /></button>
         </div>
         {showOption === "target" ? 
         <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget}/> :

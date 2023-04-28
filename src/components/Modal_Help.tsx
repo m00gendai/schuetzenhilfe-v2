@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
 import Modal_Help_About from "./Modal_Help_About";
+import {GiCrosshair, GiUncertainty, GiSherlockHolmes, GiCancel} from "react-icons/gi"
 
-import { CancelButton, CrosshairButton, SherlockButton, UncertainButton } from "../buttons";
-
-import s from "../styles/Modal_Help.module.css";
+import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps {
   showHelp: boolean;
@@ -17,28 +16,30 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
   const [chapter, setChapter] = useState<String>("main");
 
   return (
-    <aside className={s.veil}>
-      <div className={s.modal}>
+    <aside className={modal.veil}>
+      <div className={modal.modal}>
         {chapter === "main" ? (
-          <>
-            <button className={s.close} name="schliessen" onClick={() => setShowHelp(!showHelp)}>
-              <CancelButton />
-            </button>
-            <div className={s.content}>
+          <><div className={modal.buttonRow}>
+          <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
+            <GiCancel />
+          </button>
+        </div>
+            <div className={modal.content}>
+              <h1 className={modal.title}>Hilfemenü</h1>
               <div
-                className={s.chapter}
+                className={modal.chapter}
                 onClick={() => setChapter("mode_controller")}
               >
-                <p className={s.chapterTitle}>Modus Zeiger</p>
-                <CrosshairButton />
+                <p className={modal.chapterTitle}>Modus Zeiger</p>
+                <p className={modal.chapterIcon}><GiCrosshair /></p>
               </div>
-              <div className={s.chapter} onClick={() => setChapter("sights")}>
-                <p className={s.chapterTitle}>Visierverstellungen</p>
-                <p className={s.arrow}><UncertainButton /></p>
+              <div className={modal.chapter} onClick={() => setChapter("sights")}>
+                <p className={modal.chapterTitle}>Visierverstellungen</p>
+                <p className={modal.chapterIcon}><GiUncertainty /></p>
               </div>
-              <div className={s.chapter} onClick={() => setChapter("about")}>
-                <p className={s.chapterTitle}>Über</p>
-                <p className={s.arrow}><SherlockButton /></p>
+              <div className={modal.chapter} onClick={() => setChapter("about")}>
+                <p className={modal.chapterTitle}>Über</p>
+                <p className={modal.chapterIcon}><GiSherlockHolmes /></p>
               </div>
             </div>
           </>
