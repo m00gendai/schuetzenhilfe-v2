@@ -1,6 +1,7 @@
-import { CancelButton, ArrowLeftButton } from "../buttons";
+import{ GiCancel, GiSideswipe } from "react-icons/gi"
 
-import s from "../styles/Modal_Help_Sights_Stgw90.module.css";
+import s from "../styles/Modal_Help_Sights_Weapon.module.css"
+import modal from "../styles/Modal_Globals.module.css";
 
 interface modalProps {
   showHelp: boolean;
@@ -25,16 +26,16 @@ export default function Modal_Help_Sights_Weapon({
 }: modalProps) {
   return (
     <>
-      <div className={s.buttonRow}>
-        <button className={s.back} name="zurück" onClick={() => setSubchapter("sights")}>
-          <ArrowLeftButton />
+      <div className={modal.buttonRow}>
+        <button className={modal.backButton} title="zurück" onClick={() => setSubchapter("sights")}>
+          <GiSideswipe />
         </button>
-        <button className={s.close} name="schliessen" onClick={() => setShowHelp(!showHelp)}>
-          <CancelButton />
+        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
+          <GiCancel />
         </button>
       </div>
-      <div className={s.content}>
-        <h1 className={s.title}>{sight.weapon}</h1>
+      <div className={modal.content}>
+        <h1 className={modal.title}>{sight.weapon}</h1>
         <div className={s.item}>
           <div className={s.image}></div>
           <p>
