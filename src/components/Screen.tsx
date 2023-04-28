@@ -1,5 +1,5 @@
-import {SettingsButton, RulesButton, ZoomButton, HitSwitchButton} from "../buttons"
 import s from "../styles/Screen.module.css";
+import { GiCog, GiMagnifyingGlass, GiMultipleTargets, GiRuleBook } from "react-icons/gi";
 
 interface screenProps {
   hit: number;
@@ -26,18 +26,18 @@ export default function Screen({
 }: screenProps) {
   return (
     <section className={s.container}>
-      <button className={s.button} name="Einstellungen" onClick={() => setShowOptions(!showOptions)}>
-        <SettingsButton />
+      <button className={s.button} title="Einstellungen" onClick={() => setShowOptions(!showOptions)}>
+        <GiCog />
       </button>
-      <button className={s.button} name="Vergrössern" onClick={()=>setZoom(zoom === 3 ? 1 : zoom+1)}style={{margin: "0 0 0 0.25rem"}} >
-        <ZoomButton />
+      <button className={s.button} title="Zielscheibe Vergrössern" onClick={()=>setZoom(zoom === 3 ? 1 : zoom+1)}style={{margin: "0 0 0 0.25rem"}} >
+        <GiMagnifyingGlass />
       </button>
       <div className={s.score}>{hit < 0 ? "0" : hit}</div>
-      <button className={s.button} name="Trefferanzeige wechseln" onClick={()=>setReticle(reticle === 2 ? 1 : reticle+1)} style={{margin: "0 0.25rem 0 0"}} >
-        <HitSwitchButton />
+      <button className={s.button} title="Trefferanzeige wechseln" onClick={()=>setReticle(reticle === 2 ? 1 : reticle+1)} style={{margin: "0 0.25rem 0 0"}} >
+        <GiMultipleTargets />
       </button>
-      <button className={s.button} name="Hilfe" onClick={() => setShowHelp(!showHelp)}>
-        <RulesButton />
+      <button className={s.button} title="Hilfe" onClick={() => setShowHelp(!showHelp)}>
+        <GiRuleBook />
       </button>
     </section>
   );
