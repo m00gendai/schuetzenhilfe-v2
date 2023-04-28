@@ -1,8 +1,6 @@
 import s from "../styles/Hit.module.css";
-
+import {GiCrosshair} from "react-icons/gi"
 import {useRef} from "react"
-
-import crosshair from "../assets/crosshair.svg"
 
 interface hitProps {
   score: number;
@@ -27,7 +25,7 @@ export default function Hit({ score, y, x, zoom, reticle }: hitProps) {
   }
   return (
     <div className={`${reticle === 1 ? s.circle : s.x}`} style={{ top: `${y}px`, left: `${x}px` }} ref={hitElement}>
-      { reticle === 1 ? score < 0 ? "0" : Math.ceil(score / 10) : <img src={crosshair}/>}
+      { reticle === 1 ? score < 0 ? "0" : Math.ceil(score / 10) : <GiCrosshair />}
     </div>
   );
 }
