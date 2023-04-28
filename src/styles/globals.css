@@ -36,20 +36,3 @@ main{
     outline: 5px solid blue;
     border: none;
 }
-
-.closeButton{
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
-    outline: none;
-    background: red;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 2rem;
-    aspect-ratio: 1/1;
-    font-size: 2rem;
-}
