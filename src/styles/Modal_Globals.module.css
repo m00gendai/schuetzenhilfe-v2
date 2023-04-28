@@ -1,0 +1,129 @@
+.veil{
+    position: fixed;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+@media screen and (orientation:landscape) {
+    .veil {
+        height: 100vh;
+        aspect-ratio: 14/21;
+    }
+}
+    
+@media screen and (orientation: portrait) {
+    .veil{
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+.modal{
+    position: relative;
+    width: 90%;
+    height: 95%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-family: "Arial";
+}
+
+.buttonRow{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    margin: 0 0 1rem 0;
+}
+
+.closeButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    outline: none;
+    background: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    font-size: 2rem;
+}
+
+.backButton{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    outline: none;
+    background: green;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 4rem;
+    aspect-ratio: 2/1;
+    font-size: 2rem;
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    height: calc(90% - 4rem);
+    padding: 0 1rem 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.title{
+    margin: 0 0 1rem 0;
+}
+
+.chapter{
+    position: relative;
+    width: 100%;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    padding: 1rem 0.5rem;
+    user-select: none;
+    margin: 0 0 2rem 0;
+    box-shadow: 5px 5px 0px 0px black;
+}
+
+.chapterTitle{
+    margin: 0;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-indent: 1rem;
+}
+
+.chapterIcon{
+    position: relative;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
