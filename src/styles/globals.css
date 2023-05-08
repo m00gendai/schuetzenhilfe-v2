@@ -42,3 +42,7 @@ main{
    color: blue;
    outline: 2px solid blue;
 }
+
+button:hover{
+    cursor: pointer;
+}
