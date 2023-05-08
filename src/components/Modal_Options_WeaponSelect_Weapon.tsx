@@ -60,7 +60,7 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
         {prefix: "ZF", name: "Zielfernrohre", },
         {prefix: "LP", name: "Gewehr", },
       ]
-      
+
     return(
         <details className={s.itemGrid}>
             <summary className={s.title}>{spoiler.name}</summary>
@@ -69,12 +69,18 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
                 const prefix = weaponItem.designation.split(" - ")
                 if(prefix[0] == spoiler.prefix){
                             return (
-                                <div onClick={(event:any)=>assignWeapon(event)} key={weaponItem.designation} 
-                                className={weaponItem.designation === weapon.designation ? `${s.imageContainer} active` : `${s.imageContainer}`}
-                                id={`${weaponItem.designation}`}>
-                                  <div className={s.image} 
-                                  style={{backgroundImage: `url("/${prefix[1].replaceAll("/", "_")}.svg")` ? `url("/${prefix[1].replaceAll("/", "_")}.svg")` : `url("testbild.png")`}}></div>
-                                    <span className={s.name}>{prefix[1]}</span>
+                                <div 
+                                  onClick={(event:any)=>assignWeapon(event)} 
+                                  key={weaponItem.designation} 
+                                  className={weaponItem.designation === weapon.designation ? `${s.imageContainer} active` : `${s.imageContainer}`}
+                                  id={`${weaponItem.designation}`}
+                                >
+                                  <div 
+                                    className={s.image} 
+                                    style={{backgroundImage: `url("/${prefix[1].replaceAll("/", "_")}.svg")` ? `url("/${prefix[1].replaceAll("/", "_")}.svg")` : `url("testbild.png")`}}
+                                  >
+                                  </div>
+                                  <span className={s.name}>{prefix[1]}</span>
                                 </div>
                             )
                          
