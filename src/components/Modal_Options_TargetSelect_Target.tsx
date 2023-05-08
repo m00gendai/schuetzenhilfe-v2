@@ -1,4 +1,5 @@
 import s from "../styles/Modal_Options.module.css"
+import { useEffect } from "react"
 
 interface Target {
     designation: string;
@@ -17,23 +18,17 @@ interface Target {
   interface modalProps{
     spoiler: Spoilers;
     targetList: Target[];
-    setTarget: React.Dispatch<React.SetStateAction<Target>>
+    setTarget: React.Dispatch<React.SetStateAction<Target>>;
+    target: Target;
   }
   
-  export default function Modal_Options_TargetSelect_Target({spoiler, targetList, setTarget}:modalProps){
+  export default function Modal_Options_TargetSelect_Target({spoiler, targetList, setTarget, target}:modalProps){
     function assignTarget(event: any) {
-        const targetImages = document.querySelectorAll(`.${s.targetImageContainer}`);
+        const targetImages = document.querySelectorAll(`.${s.imageContainer}`);
         for (let target of targetList) {
           if (target.designation === event.currentTarget.id) {
             setTarget(target);
             localStorage.setItem("Schützenhilfe_Ziel", JSON.stringify(target));
-          }
-        }
-        for (let target of targetImages) {
-          if (target.id === event.currentTarget.id) {
-            target.classList.add("active");
-          } else {
-            target.classList.remove("active");
           }
         }
       }
@@ -42,19 +37,19 @@ interface Target {
         <details className={s.itemGrid}>
             <summary className={s.title} >{spoiler.long}</summary>
             <div className={s.itemGridInner}>
-              {targetList.map((target) => {
-                if (target.type === spoiler.name) {
+              {targetList.map((targetItem) => {
+                if (targetItem.type === spoiler.name) {
                   return (
                     <div
                       onClick={(event: any) => assignTarget(event)}
-                      key={target.name}
-                      className={s.imageContainer}
-                      id={`${target.designation}`}><div className={s.image}
+                      key={targetItem.name}
+                      className={targetItem.designation === target.designation ? `${s.imageContainer} active` : `${s.imageContainer}`}
+                      id={`${targetItem.designation}`}><div className={s.image}
                       style={{
-                        backgroundImage: `url("${target.designation}.jpg")`,
+                        backgroundImage: `url("${targetItem.designation}.jpg")`,
                       }}
                     ></div>
-                      <span className={s.name}>{target.name}</span>
+                      <span className={s.name}>{targetItem.name}</span>
                     </div>
                   );
                 }

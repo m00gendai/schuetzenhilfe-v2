@@ -12,6 +12,7 @@ interface Target {
 interface modalProps{
   targetList: Target[];
   setTarget: React.Dispatch<React.SetStateAction<Target>>
+  target: Target;
 }
 
 interface Spoilers{
@@ -31,13 +32,13 @@ const spoilers: Spoilers[] = [
 ]
 
 
-export default function Modal_Options_TargetSelect({targetList, setTarget}:modalProps){
+export default function Modal_Options_TargetSelect({targetList, setTarget, target}:modalProps){
 
     return(
       <div className={modal.content}>
         {
           spoilers.map(spoiler =>{
-            return <Modal_Options_TargetSelect_Target key={spoiler.name} spoiler={spoiler} targetList={targetList} setTarget={setTarget}/>
+            return <Modal_Options_TargetSelect_Target key={spoiler.name} spoiler={spoiler} targetList={targetList} setTarget={setTarget} target={target}/>
           })
         }
           </div>

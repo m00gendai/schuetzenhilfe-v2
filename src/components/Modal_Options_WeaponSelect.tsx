@@ -15,6 +15,7 @@ interface modalProps{
   elevation: number;
   weaponList: Weapon[];
   setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
+  weapon: Weapon;
 }
 
 interface Spoilers{
@@ -35,12 +36,12 @@ const spoilers: Spoilers[] = [
 ]
 
 
-export default function Modal_Options_WeaponSelect({base, windage, elevation, weaponList, setWeapon}:modalProps){
+export default function Modal_Options_WeaponSelect({base, windage, elevation, weaponList, setWeapon, weapon}:modalProps){
   
     return(
       <div className={modal.content}>
         {spoilers.map(spoiler=>{
-          return <Modal_Options_WeaponSelect_Weapon base={base} windage={windage} elevation={elevation} key={spoiler.prefix} spoiler={spoiler} weaponList={weaponList} setWeapon={setWeapon}/>
+          return <Modal_Options_WeaponSelect_Weapon base={base} windage={windage} elevation={elevation} key={spoiler.prefix} spoiler={spoiler} weaponList={weaponList} setWeapon={setWeapon} weapon={weapon}/>
         })}
         
         </div>

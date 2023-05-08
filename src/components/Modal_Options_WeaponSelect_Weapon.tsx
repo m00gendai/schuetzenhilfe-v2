@@ -25,13 +25,14 @@ interface Spoilers{
     spoiler: Spoilers;
     weaponList: Weapon[];
     setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
+    weapon: Weapon;
     
   }
 
-export default function Modal_Options_WeaponSelect_weapon({base, windage, elevation, spoiler, weaponList, setWeapon}:modalProps){
+export default function Modal_Options_WeaponSelect_weapon({base, windage, elevation, spoiler, weaponList, setWeapon, weapon}:modalProps){
 
     function assignWeapon(event: any) {
-        const weaponImages = document.querySelectorAll(`.${s.weaponImageContainer}`);
+        const weaponImages = document.querySelectorAll(`.${s.imageContainer}`);
         for (let weapon of weaponList) {
           const prefix: string[] = weapon.designation.split(" - ")
           if (weapon.designation === event.currentTarget.id) {
@@ -47,13 +48,6 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
             setWeapon(weapon);
             localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(weapon));
             }
-          }
-        }
-        for (let weapon of weaponImages) {
-          if (weapon.id === event.currentTarget.id) {
-            weapon.classList.add("active");
-          } else {
-            weapon.classList.remove("active");
           }
         }
       }
@@ -72,12 +66,15 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
         <details className={s.itemGrid}>
             <summary className={s.title}>{spoiler.name}</summary>
             <div className={s.itemGridInner}>            
-            {weaponList.map((weapon) => {
-                const prefix = weapon.designation.split(" - ")
+            {weaponList.map((weaponItem) => {
+                const prefix = weaponItem.designation.split(" - ")
                 if(prefix[0] == spoiler.prefix){
                             return (
-                                <div onClick={(event:any)=>assignWeapon(event)} key={weapon.designation} className={s.imageContainer} id={`${weapon.designation}`}>
-                                  <div className={s.image} style={{backgroundImage: `url("/${prefix[1].replaceAll("/", "_")}.svg")` ? `url("/${prefix[1].replaceAll("/", "_")}.svg")` : `url("testbild.png")`}}></div>
+                                <div onClick={(event:any)=>assignWeapon(event)} key={weaponItem.designation} 
+                                className={weaponItem.designation === weapon.designation ? `${s.imageContainer} active` : `${s.imageContainer}`}
+                                id={`${weaponItem.designation}`}>
+                                  <div className={s.image} 
+                                  style={{backgroundImage: `url("/${prefix[1].replaceAll("/", "_")}.svg")` ? `url("/${prefix[1].replaceAll("/", "_")}.svg")` : `url("testbild.png")`}}></div>
                                     <span className={s.name}>{prefix[1]}</span>
                                 </div>
                             )
