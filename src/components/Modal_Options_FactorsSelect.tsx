@@ -1,5 +1,6 @@
 import s from "../styles/Modal_Options.module.css";
 import modal from "../styles/Modal_Globals.module.css"
+import { useEffect } from "react"
 
 interface modalProps{
     distance: number;
@@ -10,9 +11,17 @@ interface modalProps{
   setElevation: React.Dispatch<React.SetStateAction<number>>;
   base: number;
   setBase: React.Dispatch<React.SetStateAction<number>>;
+  setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
 }
 
-export default function Modal_Options_FactorsSelect({distance, setDistance, windage, setWindage, elevation, setElevation, base, setBase}:modalProps){
+interface Weapon {
+  designation: string;
+  windageStep: number;
+  elevationStep: number;
+  base: number;
+}
+
+export default function Modal_Options_FactorsSelect({distance, setDistance, windage, setWindage, elevation, setElevation, base, setBase, setWeapon}:modalProps){
 
     function assignDistance(event: any) {
        setDistance(event.currentTarget.value);
@@ -45,6 +54,19 @@ export default function Modal_Options_FactorsSelect({distance, setDistance, wind
           JSON.stringify(event.currentTarget.value)
         );
       }
+
+      /* This re-sets the individual weapon if any of elevation, windage or base change.
+         If it wouldn't re-set the infividual weapon, the new values wouldnt be applied until the individual weapon
+         is selected manually again. */
+      useEffect(()=>{ 
+              const d = "I - Individuelle Verstellschritte"
+              const w = windage
+              const e = elevation
+              const b = base
+              const custom: Weapon = {designation: d, windageStep: w, elevationStep: e, base: b}
+              setWeapon(custom)
+              localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(custom));
+          },[windage, elevation, base])
 
     return(
         <div className={modal.content}>

@@ -92,7 +92,7 @@ export default function Modal_Options({
         <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget} target={target}/> :
         showOption === "weapon" ? 
         <Modal_Options_WeaponSelect base={base} windage={windage} elevation={elevation} weaponList={weaponListSorted} setWeapon={setWeapon} weapon={weapon} /> :
-        <Modal_Options_FactorsSelect distance={distance} setDistance={setDistance} windage={windage} setWindage={setWindage} elevation={elevation} setElevation={setElevation} base={base} setBase={setBase}/>
+        <Modal_Options_FactorsSelect distance={distance} setDistance={setDistance} windage={windage} setWindage={setWindage} elevation={elevation} setElevation={setElevation} base={base} setBase={setBase} setWeapon={setWeapon}/>
         }
       </div>
     </aside>
