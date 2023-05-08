@@ -10,13 +10,13 @@ interface Targets extends Array<Target> {}
 export const targetList: Target[] = [
   {
     designation: "300m_A",
-    name: "300m A-Scheibe",
+    name: "300m A",
     distance: 300,
     type: "G300",
   },
   {
     designation: "300m_B",
-    name: "300m B-Scheibe",
+    name: "300m B",
     distance: 300,
     type: "G300",
   },
@@ -28,19 +28,19 @@ export const targetList: Target[] = [
   },
   {
     designation: "25m_Präzision",
-    name: "25m Präzisionsscheibe",
+    name: "25m Präzision",
     distance: 25,
     type: "P25",
   },
   {
     designation: "25m_Schnellfeuer",
-    name: "25m Schnellfeuerscheibe",
+    name: "25m Schnellfeuer",
     distance: 25,
     type: "P25",
   },
   {
     designation: "25m_Ordonnanz",
-    name: "25m Ordonnanz-Schnellfeuerscheibe",
+    name: "25m Ordonnanz-Schnellfeuer",
     distance: 25,
     type: "P25",
   },
@@ -52,19 +52,19 @@ export const targetList: Target[] = [
   },
   {
     designation: "50m_B",
-    name: "50m B-Scheibe",
+    name: "50m B",
     distance: 50,
     type: "P50",
   },
   {
     designation: "50m_P",
-    name: "50m P-Scheibe",
+    name: "50m P",
     distance: 50,
     type: "P50",
   },
   {
     designation: "50m_Präzision",
-    name: "50m Präzisionsscheibe",
+    name: "50m Präzision",
     distance: 50,
     type: "P50",
   },
@@ -94,7 +94,7 @@ export const targetList: Target[] = [
   },
   {
     designation: "50m_Morgarten",
-    name: "50m Morgartenscheibe",
+    name: "50m Morgarten",
     distance: 50,
     type: "P50",
   },

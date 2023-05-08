@@ -117,7 +117,7 @@ export const weaponList: Weapon[] = [
     base: 10,
   },
   {
-    designation: "LG - Anschütz Universal Mikrometerdiopter 7002/20",
+    designation: "LG - Anschütz Universal 7002/20",
     windageStep: 0.02,
     elevationStep: 0.02,
     base: 10,
