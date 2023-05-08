@@ -47,8 +47,7 @@ export default function Modal_Help_Sights_Weapon({
           <div className={s.image}></div>
           <p>
             Wenn der Treffer <strong>rechts</strong> dem Zentrum liegt,
-            Seitenkorrekturschraube im <strong>{sight.shotRight}</strong>
-            drehen.
+            Seitenkorrekturschraube im <strong>{sight.shotRight}</strong> drehen.
           </p>
         </div>
         <div className={s.item}>
