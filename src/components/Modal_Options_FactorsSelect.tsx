@@ -72,13 +72,17 @@ export default function Modal_Options_FactorsSelect({distance, setDistance, wind
         <div className={modal.content}>
           <div className={s.item}>
             <h2 className={s.title}>Zieldistanz in Meter</h2>
+            <div className={s.wrapper}>
             <input
+            className={s.input}
               type="number"
               value={distance}
               placeholder="300"
               id="setDistance"
               onChange={(event: any) => assignDistance(event)}
             />
+            <button className={s.validate}>OK</button>
+            </div>
           </div>
           <div className={s.item}>
             <h2 className={s.title}>Referenzdistanz in Meter</h2>
