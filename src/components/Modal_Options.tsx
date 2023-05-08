@@ -84,9 +84,9 @@ export default function Modal_Options({
         </button>
         </div>
         <div className={s.optionSelect}>
-          <button title="Zielscheibe wählen" onClick={()=>setShowOption("target")}><GiArcheryTarget /></button>
-          <button title="Optik wählen" onClick={()=>setShowOption("weapon")}><GiFnFal /><GiLuger /></button>
-          <button title="Einstellungen vornehmen" onClick={()=>setShowOption("factors")}><GiPencilRuler /></button>
+          <button className={showOption === "target" ? `clicked ${s.optionButton}` : `${s.optionButton}`} title="Zielscheibe wählen" onClick={()=>setShowOption("target")}><GiArcheryTarget /></button>
+          <button className={showOption === "weapon" ? `clicked ${s.optionButton}` : `${s.optionButton}`} title="Optik wählen" onClick={()=>setShowOption("weapon")}><GiFnFal /><GiLuger /></button>
+          <button className={showOption === "factors" ? `clicked ${s.optionButton}` : `${s.optionButton}`} title="Einstellungen vornehmen" onClick={()=>setShowOption("factors")}><GiPencilRuler /></button>
         </div>
         {showOption === "target" ? 
         <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget} target={target}/> :

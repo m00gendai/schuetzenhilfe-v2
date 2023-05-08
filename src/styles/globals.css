@@ -36,3 +36,9 @@ main{
     outline: 5px solid blue;
     border: none;
 }
+
+.clicked{
+   background: white;
+   color: blue;
+   outline: 2px solid blue;
+}
