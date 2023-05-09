@@ -106,7 +106,7 @@ function App() {
   const [zoom, setZoom] = useState<number>(1) // Sets target zoom in steps
   const [reticle, setReticle] = useState<number>(1) // Sets hit on target variant
   const [validated, setValidated] = useState<Validation>(initialValidation) // Factor Selection validation
-  console.log(validated)
+
   return (
     <main>
       <Target

@@ -60,7 +60,6 @@ export default function Modal_Options_FactorsSelect({
   const elevRef = useRef<HTMLInputElement>(null)
 
   const [btnState, setBtnState] = useState<ButtonState>({distance: "valid", base: "valid", windage: "valid", elevation: "valid"})
-  console.log(btnState)
   function validate(type: string){
     let inpt 
     switch(type){
