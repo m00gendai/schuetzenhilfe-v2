@@ -12,6 +12,7 @@ interface modalProps{
   setElevation: React.Dispatch<React.SetStateAction<number>>;
   base: number;
   setBase: React.Dispatch<React.SetStateAction<number>>;
+  weapon: Weapon;
   setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
   validated: Validation;
   setValidated: React.Dispatch<React.SetStateAction<Validation>>;
@@ -47,6 +48,7 @@ export default function Modal_Options_FactorsSelect({
   setElevation, 
   base, 
   setBase, 
+  weapon,
   setWeapon, 
   validated, 
   setValidated 
@@ -126,13 +128,15 @@ export default function Modal_Options_FactorsSelect({
          If it wouldn't re-set the infividual weapon, the new values wouldnt be applied until the individual weapon
          is selected manually again. */
       useEffect(()=>{ 
+        if(weapon.designation === "I - Individuelle Verstellschritte"){ // failsafe to trigger only if individual weapon is already selected
               const d = "I - Individuelle Verstellschritte"
               const w = windage
               const e = elevation
               const b = base
               const custom: Weapon = {designation: d, windageStep: w, elevationStep: e, base: b}
               setWeapon(custom)
-              localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(custom));
+              localStorage.setItem("Schusshilfe_weapon", JSON.stringify(custom));
+        }
           },[windage, elevation, base])
 
     return(
