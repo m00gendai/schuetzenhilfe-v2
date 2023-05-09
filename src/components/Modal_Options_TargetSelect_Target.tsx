@@ -28,7 +28,7 @@ interface Target {
         for (let target of targetList) {
           if (target.designation === event.currentTarget.id) {
             setTarget(target);
-            localStorage.setItem("Schützenhilfe_Ziel", JSON.stringify(target));
+            localStorage.setItem("Schusshilfe_target", JSON.stringify(target));
           }
         }
       }

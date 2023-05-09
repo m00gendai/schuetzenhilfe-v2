@@ -42,10 +42,10 @@ export default function Modal_Options_WeaponSelect_weapon({base, windage, elevat
               const b = base
               const custom: Weapon = {designation: d, windageStep: w, elevationStep: e, base: b}
               setWeapon(custom)
-              localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(custom));
+              localStorage.setItem("Schusshilfe_weapon", JSON.stringify(custom));
             } else {
             setWeapon(weapon);
-            localStorage.setItem("Schützenhilfe_Waffe", JSON.stringify(weapon));
+            localStorage.setItem("Schusshilfe_weapon", JSON.stringify(weapon));
             }
           }
         }
