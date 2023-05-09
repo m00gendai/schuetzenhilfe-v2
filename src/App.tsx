@@ -32,7 +32,7 @@ interface Validation{
 function App() {
 
   // GET TARGET FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialTarget = localStorage.getItem("Schützenhilfe_Ziel");
+  const getInitialTarget = localStorage.getItem("Schusshilfe_target");
   let initialTarget;
   typeof getInitialTarget === "string"
     ? (initialTarget = JSON.parse(getInitialTarget))
@@ -44,7 +44,7 @@ function App() {
       });
 
   // GET WEAPON FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialWeapon = localStorage.getItem("Schützenhilfe_Waffe");
+  const getInitialWeapon = localStorage.getItem("Schusshilfe_weapon");
   let initialWeapon;
   typeof getInitialWeapon === "string"
     ? (initialWeapon = JSON.parse(getInitialWeapon))
