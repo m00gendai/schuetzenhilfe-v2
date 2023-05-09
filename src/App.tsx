@@ -22,6 +22,13 @@ interface Weapon {
   base: number;
 }
 
+interface Validation{ 
+  distance: boolean;
+  base: boolean;
+  windage: boolean;
+  elevation: boolean;
+}
+
 function App() {
 
   // GET TARGET FROM LOCALSTORAGE OR SET DEFAULT
@@ -76,6 +83,13 @@ function App() {
     ? (initialCustomBase = JSON.parse(getInitialCustomBase))
     : (initialCustomBase = 25);
 
+  // GET VALIDATION FROM LOCALSTORAGE OR SET DEFAULT
+  const getInitialValidation = localStorage.getItem("Schützenhilfe_Validierung");
+  let initialValidation;
+  typeof getInitialValidation === "string"
+    ? (initialValidation = JSON.parse(getInitialValidation))
+    : (initialValidation = {distance: false, base: false, windage: false, elevation: false});
+
   const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
   const [weapon, setWeapon] = useState<Weapon>(initialWeapon); // assigns the selected weapon
   const [distance, setDistance] = useState<number>(initialDistance); // assigns the selected distance
@@ -91,7 +105,8 @@ function App() {
   const [showHelp, setShowHelp] = useState<boolean>(false); // toggles Help modal
   const [zoom, setZoom] = useState<number>(1) // Sets target zoom in steps
   const [reticle, setReticle] = useState<number>(1) // Sets hit on target variant
-
+  const [validated, setValidated] = useState<Validation>(initialValidation) // Factor Selection validation
+  console.log(validated)
   return (
     <main>
       <Target
@@ -138,6 +153,8 @@ function App() {
           setElevation={setElevation}
           base={base}
           setBase={setBase}
+          validated={validated}
+          setValidated={setValidated}
         />
       ) : null}
       {showHelp ? (

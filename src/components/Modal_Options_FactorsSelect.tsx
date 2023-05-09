@@ -1,6 +1,6 @@
 import s from "../styles/Modal_Options.module.css";
 import modal from "../styles/Modal_Globals.module.css"
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface modalProps{
     distance: number;
@@ -12,6 +12,8 @@ interface modalProps{
   base: number;
   setBase: React.Dispatch<React.SetStateAction<number>>;
   setWeapon: React.Dispatch<React.SetStateAction<Weapon>>;
+  validated: Validation;
+  setValidated: React.Dispatch<React.SetStateAction<Validation>>;
 }
 
 interface Weapon {
@@ -21,14 +23,70 @@ interface Weapon {
   base: number;
 }
 
-export default function Modal_Options_FactorsSelect({distance, setDistance, windage, setWindage, elevation, setElevation, base, setBase, setWeapon}:modalProps){
+interface Validation{
+  distance: boolean;
+  base: boolean;
+  windage: boolean;
+  elevation: boolean;
+}
+
+export default function Modal_Options_FactorsSelect({
+  distance, 
+  setDistance, 
+  windage, 
+  setWindage, 
+  elevation, 
+  setElevation, 
+  base, 
+  setBase, 
+  setWeapon, 
+  validated, 
+  setValidated 
+}:modalProps ){
+
+  const distRef = useRef<HTMLInputElement>(null)
+  const baseRef = useRef<HTMLInputElement>(null)
+  const windRef = useRef<HTMLInputElement>(null)
+  const elevRef = useRef<HTMLInputElement>(null)
+  
+  function validate(type: string){
+    let inpt 
+    switch(type){
+      case "distance":
+        inpt = distRef.current
+        break
+      case "base":
+        inpt = baseRef.current
+        break
+      case "windage":
+        inpt = windRef.current
+        break
+      case "elevation":
+        inpt = elevRef.current
+        break
+    }
+    if(inpt?.validity.patternMismatch){
+      inpt.setCustomValidity("Nur Zahlen (ganz oder dezimal) grösser als Null erlaubt")
+    } else if(inpt?.validity.tooLong){
+      inpt.setCustomValidity("Eingabe zu lange - fünf Ziffern sind erlaubt")
+    }
+    else if(inpt?.validity.valueMissing){
+      inpt.setCustomValidity("valueMissing")
+    }else {
+      inpt?.setCustomValidity("")
+      setValidated({...validated, [type]: true})
+       
+    }
+    inpt?.reportValidity()
+  }
+  
 
     function assignDistance(event: any) {
-       setDistance(event.currentTarget.value);
+        setDistance(event.currentTarget.value);
         localStorage.setItem(
           "Schützenhilfe_Distanz",
           JSON.stringify(event.currentTarget.value)
-        );     
+        );  
       }
 
       function assignCustomBase(event: any) {
@@ -75,44 +133,80 @@ export default function Modal_Options_FactorsSelect({distance, setDistance, wind
             <div className={s.wrapper}>
             <input
             className={s.input}
-              type="number"
+              type="text"
+              inputMode="numeric"
               value={distance}
+              pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
+              required
+              maxLength={5}
               placeholder="300"
               id="setDistance"
+              ref={distRef}
               onChange={(event: any) => assignDistance(event)}
+              onClick={()=>setValidated({...validated, distance: false})}
             />
-            <button className={s.validate}>OK</button>
+            <button className={s.validate} onClick={()=>validate("distance")}>OK</button>
             </div>
           </div>
           <div className={s.item}>
             <h2 className={s.title}>Referenzdistanz in Meter</h2>
+            <div className={s.wrapper}>
             <input
-              type="number"
+            className={s.input}
+              type="text"
+              inputMode="numeric"
               value={base}
+              pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
+              required
+              maxLength={5}
               placeholder="25"
-              id="setsetBase"
+              id="setBase"
+              ref={baseRef}
               onChange={(event: any) => assignCustomBase(event)}
+              onClick={()=>setValidated({...validated, base: false})}
             />
+            <button className={s.validate} onClick={()=>validate("base")}>OK</button>
+            </div>
           </div>
           <div className={s.item}>
             <h2 className={s.title}>Individueller Verstellschritt Seite in Zentimeter</h2>
+            <div className={s.wrapper}>
             <input
-              type="number"
+            className={s.input}
+              type="text"
+              inputMode="numeric"
               value={windage}
-              placeholder="1"
+              pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
+              required
+              maxLength={5}
+              placeholder="25"
               id="setWindage"
+              ref={windRef}
               onChange={(event: any) => assignCustomWindage(event)}
+              onClick={()=>setValidated({...validated, windage: false})}
             />
+            <button className={s.validate} onClick={()=>validate("windage")}>OK</button>
+            </div>
           </div>
           <div className={s.item}>
             <h2 className={s.title}>Individueller Verstellschritt Höhe in Zentimeter</h2>
+            <div className={s.wrapper}>
             <input
-              type="number"
+            className={s.input}
+              type="text"
+              inputMode="numeric"
               value={elevation}
-              placeholder="1"
+              pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
+              required
+              maxLength={5}
+              placeholder="25"
               id="setElevation"
+              ref={elevRef}
               onChange={(event: any) => assignCustomElevation(event)}
+              onClick={()=>setValidated({...validated, elevation: false})}
             />
+            <button className={s.validate} onClick={()=>validate("elevation")}>OK</button>
+            </div>
           </div>
         </div>
     )
