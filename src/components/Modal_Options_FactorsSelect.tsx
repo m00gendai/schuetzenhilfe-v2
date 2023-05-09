@@ -1,7 +1,7 @@
 import s from "../styles/Modal_Options.module.css";
 import modal from "../styles/Modal_Globals.module.css"
 import { useEffect, useRef, useState } from "react"
-import { GiPlayButton } from "react-icons/gi";
+import { GiConfirmed, GiHazardSign, GiPlayButton } from "react-icons/gi";
 
 interface modalProps{
     distance: number;
@@ -57,7 +57,7 @@ export default function Modal_Options_FactorsSelect({
   const windRef = useRef<HTMLInputElement>(null)
   const elevRef = useRef<HTMLInputElement>(null)
 
-  const [btnState, setBtnState] = useState<ButtonState>({distance: "neutral", base: "neutral", windage: "neutral", elevation: "neutral"})
+  const [btnState, setBtnState] = useState<ButtonState>({distance: "valid", base: "valid", windage: "valid", elevation: "valid"})
   console.log(btnState)
   function validate(type: string){
     let inpt 
@@ -82,6 +82,7 @@ export default function Modal_Options_FactorsSelect({
     }
     else if(inpt?.validity.valueMissing){
       inpt.setCustomValidity("Es muss ein Wert vorhanden sein")
+      setBtnState({...btnState, [type]: "error"})
     }else {
       inpt?.setCustomValidity("")
       setValidated({...validated, [type]: true})
@@ -89,7 +90,7 @@ export default function Modal_Options_FactorsSelect({
           `Schusshilfe_${type}`,
           JSON.stringify(inpt?.value)
         ); 
-       
+       setBtnState({...btnState, [type]: "valid"})
     }
     inpt?.reportValidity()
   }
@@ -98,6 +99,7 @@ export default function Modal_Options_FactorsSelect({
     function assignDistance(event: any) {
         setDistance(event.currentTarget.value);
         setValidated({...validated, distance: false})
+        setBtnState({...btnState, distance: "check"})
       }
 
       function assignCustomBase(event: any) {
@@ -146,7 +148,7 @@ export default function Modal_Options_FactorsSelect({
               ref={distRef}
               onChange={(event: any) => assignDistance(event)}
             />
-            <button className={s.validate} onClick={()=>validate("distance")}><GiPlayButton/></button>
+            <button className={s.validate} onClick={()=>validate("distance")}>{btnState.distance === "valid" ? <GiConfirmed /> : btnState.distance === "check" ? <GiPlayButton/> : <GiHazardSign />}</button>
             </div>
           </div>
           <div className={s.item}>
