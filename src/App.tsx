@@ -22,10 +22,17 @@ interface Weapon {
   base: number;
 }
 
+interface Validation{ 
+  distance: boolean;
+  base: boolean;
+  windage: boolean;
+  elevation: boolean;
+}
+
 function App() {
 
   // GET TARGET FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialTarget = localStorage.getItem("Schützenhilfe_Ziel");
+  const getInitialTarget = localStorage.getItem("Schusshilfe_target");
   let initialTarget;
   typeof getInitialTarget === "string"
     ? (initialTarget = JSON.parse(getInitialTarget))
@@ -37,7 +44,7 @@ function App() {
       });
 
   // GET WEAPON FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialWeapon = localStorage.getItem("Schützenhilfe_Waffe");
+  const getInitialWeapon = localStorage.getItem("Schusshilfe_weapon");
   let initialWeapon;
   typeof getInitialWeapon === "string"
     ? (initialWeapon = JSON.parse(getInitialWeapon))
@@ -49,32 +56,39 @@ function App() {
       });
 
   // GET DISTANCE FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialDistance = localStorage.getItem("Schützenhilfe_Distanz");
+  const getInitialDistance = localStorage.getItem("Schusshilfe_distance");
   let initialDistance;
   typeof getInitialDistance === "string"
     ? (initialDistance = JSON.parse(getInitialDistance))
     : (initialDistance = 300);
 
   // GET WINDAGE FROM LOCALSTORAGE OR SET DEFAULT
-    const getInitialCustomWindage = localStorage.getItem("Schützenhilfe_Seite");
+    const getInitialCustomWindage = localStorage.getItem("Schusshilfe_windage");
   let initialCustomWindage;
   typeof getInitialCustomWindage === "string"
     ? (initialCustomWindage = JSON.parse(getInitialCustomWindage))
     : (initialCustomWindage = 1);
 
   // GET ELEVATION FROM LOCALSTORAGE OR SET DEFAULT
-    const getInitialCustomElevation = localStorage.getItem("Schützenhilfe_Höhe");
+    const getInitialCustomElevation = localStorage.getItem("Schusshilfe_elevation");
   let initialCustomElevation;
   typeof getInitialCustomElevation === "string"
     ? (initialCustomElevation = JSON.parse(getInitialCustomElevation))
     : (initialCustomElevation = 1);
 
   // GET REFERENCE DISTANCE FROM LOCALSTORAGE OR SET DEFAULT
-    const getInitialCustomBase = localStorage.getItem("Schützenhilfe_Referenz");
+    const getInitialCustomBase = localStorage.getItem("Schusshilfe_base");
   let initialCustomBase;
   typeof getInitialCustomBase === "string"
     ? (initialCustomBase = JSON.parse(getInitialCustomBase))
     : (initialCustomBase = 25);
+
+  // GET VALIDATION FROM LOCALSTORAGE OR SET DEFAULT
+  const getInitialValidation = localStorage.getItem("Schusshilfe_validation");
+  let initialValidation;
+  typeof getInitialValidation === "string"
+    ? (initialValidation = JSON.parse(getInitialValidation))
+    : (initialValidation = {distance: true, base: true, windage: true, elevation: true}); // init is true because of the init values
 
   const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
   const [weapon, setWeapon] = useState<Weapon>(initialWeapon); // assigns the selected weapon
@@ -91,6 +105,7 @@ function App() {
   const [showHelp, setShowHelp] = useState<boolean>(false); // toggles Help modal
   const [zoom, setZoom] = useState<number>(1) // Sets target zoom in steps
   const [reticle, setReticle] = useState<number>(1) // Sets hit on target variant
+  const [validated, setValidated] = useState<Validation>(initialValidation) // Factor Selection validation
 
   return (
     <main>
@@ -138,6 +153,8 @@ function App() {
           setElevation={setElevation}
           base={base}
           setBase={setBase}
+          validated={validated}
+          setValidated={setValidated}
         />
       ) : null}
       {showHelp ? (

@@ -38,14 +38,57 @@
     align-content: flex-start;
 }
 
-.item input {
-    width: 90%;
+.wrapper{
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 3rem;
+    position: relative;
+    flex-direction: row;
+}
+
+.input {
+    position: relative;
     padding: 0;
-    margin: 0.5rem;
     border: 0;
     outline: 0;
     text-indent: 1rem;
     font-size: 2rem;
+    width: 0;
+    height: 100%;
+    margin: 0 1rem 0 0;
+    flex-grow: 1;
+    font-family: monospace;
+}
+
+.validate{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 0;
+    height: 100%;
+    aspect-ratio: 21/10;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    color: white;
+}
+
+.valid{
+    background: green;
+}
+
+.check{
+    background: blue;
+}
+
+.error{
+    background: red;
 }
 
 .title{

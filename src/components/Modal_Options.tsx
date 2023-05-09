@@ -25,6 +25,13 @@ interface Target {
   type: string;
 }
 
+interface Validation{ 
+  distance: boolean;
+  base: boolean;
+  windage: boolean;
+  elevation: boolean;
+}
+
 interface modalProps {
   showOptions: boolean;
   setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,6 +47,8 @@ interface modalProps {
   setElevation: React.Dispatch<React.SetStateAction<number>>;
   base: number;
   setBase: React.Dispatch<React.SetStateAction<number>>;
+  validated: Validation;
+  setValidated: React.Dispatch<React.SetStateAction<Validation>>
 }
 
 export default function Modal_Options({
@@ -55,10 +64,14 @@ export default function Modal_Options({
   setWindage,
   elevation,
   setElevation,
-  base, setBase
+  base, 
+  setBase,
+  validated, 
+  setValidated 
 }: modalProps) {
 
   const [showOption, setShowOption] = useState<String>("target")
+  
 
   const targetListSorted: Target[] = targetList.sort((a, b) => {
     const x: String = a.type;
@@ -71,6 +84,13 @@ export default function Modal_Options({
     return x < y ? -1 : x > y ? 1 : 0;
   });
 
+  function handleClose(){
+    if(Object.values(validated).every(val => val)){
+      localStorage.setItem("Schusshilfe_validation", JSON.stringify(validated))
+      setShowOptions(!showOptions)
+    }
+  }
+
   return (
     <aside className={modal.veil}>
       <div className={modal.modal}>
@@ -78,7 +98,7 @@ export default function Modal_Options({
         <button
           className={modal.closeButton}
           title="Optionsmenü schliessen"
-          onClick={() => setShowOptions(!showOptions)}
+          onClick={() => handleClose()}
         >
           <GiCancel />
         </button>
@@ -89,10 +109,34 @@ export default function Modal_Options({
           <button className={showOption === "factors" ? `clicked ${s.optionButton}` : `${s.optionButton}`} title="Einstellungen vornehmen" onClick={()=>setShowOption("factors")}><GiPencilRuler /></button>
         </div>
         {showOption === "target" ? 
-        <Modal_Options_TargetSelect targetList={targetListSorted} setTarget={setTarget} target={target}/> :
+        <Modal_Options_TargetSelect 
+          targetList={targetListSorted} 
+          setTarget={setTarget} 
+          target={target}
+        /> :
         showOption === "weapon" ? 
-        <Modal_Options_WeaponSelect base={base} windage={windage} elevation={elevation} weaponList={weaponListSorted} setWeapon={setWeapon} weapon={weapon} /> :
-        <Modal_Options_FactorsSelect distance={distance} setDistance={setDistance} windage={windage} setWindage={setWindage} elevation={elevation} setElevation={setElevation} base={base} setBase={setBase} setWeapon={setWeapon}/>
+        <Modal_Options_WeaponSelect 
+          base={base} 
+          windage={windage} 
+          elevation={elevation} 
+          weaponList={weaponListSorted} 
+          setWeapon={setWeapon} 
+          weapon={weapon}
+        /> :
+        <Modal_Options_FactorsSelect 
+          distance={distance} 
+          setDistance={setDistance} 
+          windage={windage} 
+          setWindage={setWindage} 
+          elevation={elevation} 
+          setElevation={setElevation} 
+          base={base} 
+          setBase={setBase} 
+          weapon={weapon}
+          setWeapon={setWeapon} 
+          validated={validated}
+          setValidated={setValidated}
+        />
         }
       </div>
     </aside>
