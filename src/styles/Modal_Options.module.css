@@ -73,11 +73,22 @@
     padding: 0;
     height: 100%;
     aspect-ratio: 21/10;
-    background: blue;
     border: none;
     outline: none;
     font-size: 2rem;
     color: white;
+}
+
+.valid{
+    background: green;
+}
+
+.check{
+    background: blue;
+}
+
+.error{
+    background: red;
 }
 
 .title{

@@ -77,8 +77,10 @@ export default function Modal_Options_FactorsSelect({
     }
     if(inpt?.validity.patternMismatch){
       inpt.setCustomValidity("Nur Zahlen (ganz oder dezimal) grösser als Null erlaubt")
+      setBtnState({...btnState, [type]: "error"})
     } else if(inpt?.validity.tooLong){
       inpt.setCustomValidity("Eingabe zu lange - fünf Ziffern sind erlaubt")
+      setBtnState({...btnState, [type]: "error"})
     }
     else if(inpt?.validity.valueMissing){
       inpt.setCustomValidity("Es muss ein Wert vorhanden sein")
@@ -105,16 +107,19 @@ export default function Modal_Options_FactorsSelect({
       function assignCustomBase(event: any) {
         setBase(event.currentTarget.value);
         setValidated({...validated, base: false})
+        setBtnState({...btnState, base: "check"})
       }
 
       function assignCustomWindage(event: any) {
         setWindage(event.currentTarget.value);
         setValidated({...validated, windage: false})
+        setBtnState({...btnState, windage: "check"})
       }
 
       function assignCustomElevation(event: any) {
         setElevation(event.currentTarget.value);
         setValidated({...validated, elevation: false})
+        setBtnState({...btnState, elevation: "check"})
       }
 
       /* This re-sets the individual weapon if any of elevation, windage or base change.
@@ -148,7 +153,17 @@ export default function Modal_Options_FactorsSelect({
               ref={distRef}
               onChange={(event: any) => assignDistance(event)}
             />
-            <button className={s.validate} onClick={()=>validate("distance")}>{btnState.distance === "valid" ? <GiConfirmed /> : btnState.distance === "check" ? <GiPlayButton/> : <GiHazardSign />}</button>
+            <button 
+              className={
+                btnState.distance === "valid" ? `${s.validate} ${s.valid}` 
+                : btnState.distance === "check" ? `${s.validate} ${s.check}` 
+                : `${s.validate} ${s.error}`} onClick={()=>validate("distance")}
+              >
+                {
+                btnState.distance === "valid" ? <GiConfirmed /> 
+                : btnState.distance === "check" ? <GiPlayButton/> 
+                : <GiHazardSign />}
+              </button>
             </div>
           </div>
           <div className={s.item}>
@@ -167,7 +182,17 @@ export default function Modal_Options_FactorsSelect({
               ref={baseRef}
               onChange={(event: any) => assignCustomBase(event)}
             />
-            <button className={s.validate} onClick={()=>validate("base")}><GiPlayButton/></button>
+            <button 
+              className={
+                btnState.base === "valid" ? `${s.validate} ${s.valid}` 
+                : btnState.base === "check" ? `${s.validate} ${s.check}` 
+                : `${s.validate} ${s.error}`} onClick={()=>validate("base")}
+              >
+                {
+                btnState.base === "valid" ? <GiConfirmed /> 
+                : btnState.base === "check" ? <GiPlayButton/> 
+                : <GiHazardSign />}
+              </button>
             </div>
           </div>
           <div className={s.item}>
@@ -186,7 +211,17 @@ export default function Modal_Options_FactorsSelect({
               ref={windRef}
               onChange={(event: any) => assignCustomWindage(event)}
             />
-            <button className={s.validate} onClick={()=>validate("windage")}><GiPlayButton/></button>
+            <button 
+              className={
+                btnState.windage === "valid" ? `${s.validate} ${s.valid}` 
+                : btnState.windage === "check" ? `${s.validate} ${s.check}` 
+                : `${s.validate} ${s.error}`} onClick={()=>validate("windage")}
+              >
+                {
+                btnState.windage === "valid" ? <GiConfirmed /> 
+                : btnState.windage === "check" ? <GiPlayButton/> 
+                : <GiHazardSign />}
+              </button>
             </div>
           </div>
           <div className={s.item}>
@@ -205,7 +240,17 @@ export default function Modal_Options_FactorsSelect({
               ref={elevRef}
               onChange={(event: any) => assignCustomElevation(event)}
             />
-            <button className={s.validate} onClick={()=>validate("elevation")}><GiPlayButton/></button>
+            <button 
+              className={
+                btnState.elevation === "valid" ? `${s.validate} ${s.valid}` 
+                : btnState.elevation === "check" ? `${s.validate} ${s.check}` 
+                : `${s.validate} ${s.error}`} onClick={()=>validate("elevation")}
+              >
+                {
+                btnState.elevation === "valid" ? <GiConfirmed /> 
+                : btnState.elevation === "check" ? <GiPlayButton/> 
+                : <GiHazardSign />}
+              </button>
             </div>
           </div>
         </div>
