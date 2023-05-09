@@ -132,6 +132,7 @@ export default function Modal_Options({
           setElevation={setElevation} 
           base={base} 
           setBase={setBase} 
+          weapon={weapon}
           setWeapon={setWeapon} 
           validated={validated}
           setValidated={setValidated}
