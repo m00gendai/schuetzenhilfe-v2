@@ -1,6 +1,7 @@
 import s from "../styles/Modal_Options.module.css";
 import modal from "../styles/Modal_Globals.module.css"
 import { useEffect, useRef, useState } from "react"
+import { GiPlayButton } from "react-icons/gi";
 
 interface modalProps{
     distance: number;
@@ -30,6 +31,13 @@ interface Validation{
   elevation: boolean;
 }
 
+interface ButtonState{
+  distance: string;
+  base: string;
+  windage: string;
+  elevation: string;
+}
+
 export default function Modal_Options_FactorsSelect({
   distance, 
   setDistance, 
@@ -48,7 +56,9 @@ export default function Modal_Options_FactorsSelect({
   const baseRef = useRef<HTMLInputElement>(null)
   const windRef = useRef<HTMLInputElement>(null)
   const elevRef = useRef<HTMLInputElement>(null)
-  
+
+  const [btnState, setBtnState] = useState<ButtonState>({distance: "neutral", base: "neutral", windage: "neutral", elevation: "neutral"})
+  console.log(btnState)
   function validate(type: string){
     let inpt 
     switch(type){
@@ -71,10 +81,14 @@ export default function Modal_Options_FactorsSelect({
       inpt.setCustomValidity("Eingabe zu lange - fünf Ziffern sind erlaubt")
     }
     else if(inpt?.validity.valueMissing){
-      inpt.setCustomValidity("valueMissing")
+      inpt.setCustomValidity("Es muss ein Wert vorhanden sein")
     }else {
       inpt?.setCustomValidity("")
       setValidated({...validated, [type]: true})
+        localStorage.setItem(
+          `Schusshilfe_${type}`,
+          JSON.stringify(inpt?.value)
+        ); 
        
     }
     inpt?.reportValidity()
@@ -83,34 +97,22 @@ export default function Modal_Options_FactorsSelect({
 
     function assignDistance(event: any) {
         setDistance(event.currentTarget.value);
-        localStorage.setItem(
-          "Schützenhilfe_Distanz",
-          JSON.stringify(event.currentTarget.value)
-        );  
+        setValidated({...validated, distance: false})
       }
 
       function assignCustomBase(event: any) {
         setBase(event.currentTarget.value);
-        localStorage.setItem(
-          "Schützenhilfe_Referenz",
-          JSON.stringify(event.currentTarget.value)
-        );
+        setValidated({...validated, base: false})
       }
 
       function assignCustomWindage(event: any) {
         setWindage(event.currentTarget.value);
-        localStorage.setItem(
-          "Schützenhilfe_Seite",
-          JSON.stringify(event.currentTarget.value)
-        );
+        setValidated({...validated, windage: false})
       }
 
       function assignCustomElevation(event: any) {
         setElevation(event.currentTarget.value);
-        localStorage.setItem(
-          "Schützenhilfe_Höhe",
-          JSON.stringify(event.currentTarget.value)
-        );
+        setValidated({...validated, elevation: false})
       }
 
       /* This re-sets the individual weapon if any of elevation, windage or base change.
@@ -143,9 +145,8 @@ export default function Modal_Options_FactorsSelect({
               id="setDistance"
               ref={distRef}
               onChange={(event: any) => assignDistance(event)}
-              onClick={()=>setValidated({...validated, distance: false})}
             />
-            <button className={s.validate} onClick={()=>validate("distance")}>OK</button>
+            <button className={s.validate} onClick={()=>validate("distance")}><GiPlayButton/></button>
             </div>
           </div>
           <div className={s.item}>
@@ -163,9 +164,8 @@ export default function Modal_Options_FactorsSelect({
               id="setBase"
               ref={baseRef}
               onChange={(event: any) => assignCustomBase(event)}
-              onClick={()=>setValidated({...validated, base: false})}
             />
-            <button className={s.validate} onClick={()=>validate("base")}>OK</button>
+            <button className={s.validate} onClick={()=>validate("base")}><GiPlayButton/></button>
             </div>
           </div>
           <div className={s.item}>
@@ -179,13 +179,12 @@ export default function Modal_Options_FactorsSelect({
               pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
               required
               maxLength={5}
-              placeholder="25"
+              placeholder="1.5"
               id="setWindage"
               ref={windRef}
               onChange={(event: any) => assignCustomWindage(event)}
-              onClick={()=>setValidated({...validated, windage: false})}
             />
-            <button className={s.validate} onClick={()=>validate("windage")}>OK</button>
+            <button className={s.validate} onClick={()=>validate("windage")}><GiPlayButton/></button>
             </div>
           </div>
           <div className={s.item}>
@@ -199,13 +198,12 @@ export default function Modal_Options_FactorsSelect({
               pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
               required
               maxLength={5}
-              placeholder="25"
+              placeholder="1.5"
               id="setElevation"
               ref={elevRef}
               onChange={(event: any) => assignCustomElevation(event)}
-              onClick={()=>setValidated({...validated, elevation: false})}
             />
-            <button className={s.validate} onClick={()=>validate("elevation")}>OK</button>
+            <button className={s.validate} onClick={()=>validate("elevation")}><GiPlayButton/></button>
             </div>
           </div>
         </div>

@@ -86,7 +86,7 @@ export default function Modal_Options({
 
   function handleClose(){
     if(Object.values(validated).every(val => val)){
-      localStorage.setItem("Schützenhilfe_Validierung", JSON.stringify(validated))
+      localStorage.setItem("Schusshilfe_validation", JSON.stringify(validated))
       setShowOptions(!showOptions)
     }
   }
