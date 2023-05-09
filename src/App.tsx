@@ -56,39 +56,39 @@ function App() {
       });
 
   // GET DISTANCE FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialDistance = localStorage.getItem("Schützenhilfe_Distanz");
+  const getInitialDistance = localStorage.getItem("Schusshilfe_distance");
   let initialDistance;
   typeof getInitialDistance === "string"
     ? (initialDistance = JSON.parse(getInitialDistance))
     : (initialDistance = 300);
 
   // GET WINDAGE FROM LOCALSTORAGE OR SET DEFAULT
-    const getInitialCustomWindage = localStorage.getItem("Schützenhilfe_Seite");
+    const getInitialCustomWindage = localStorage.getItem("Schusshilfe_windage");
   let initialCustomWindage;
   typeof getInitialCustomWindage === "string"
     ? (initialCustomWindage = JSON.parse(getInitialCustomWindage))
     : (initialCustomWindage = 1);
 
   // GET ELEVATION FROM LOCALSTORAGE OR SET DEFAULT
-    const getInitialCustomElevation = localStorage.getItem("Schützenhilfe_Höhe");
+    const getInitialCustomElevation = localStorage.getItem("Schusshilfe_elevation");
   let initialCustomElevation;
   typeof getInitialCustomElevation === "string"
     ? (initialCustomElevation = JSON.parse(getInitialCustomElevation))
     : (initialCustomElevation = 1);
 
   // GET REFERENCE DISTANCE FROM LOCALSTORAGE OR SET DEFAULT
-    const getInitialCustomBase = localStorage.getItem("Schützenhilfe_Referenz");
+    const getInitialCustomBase = localStorage.getItem("Schusshilfe_base");
   let initialCustomBase;
   typeof getInitialCustomBase === "string"
     ? (initialCustomBase = JSON.parse(getInitialCustomBase))
     : (initialCustomBase = 25);
 
   // GET VALIDATION FROM LOCALSTORAGE OR SET DEFAULT
-  const getInitialValidation = localStorage.getItem("Schützenhilfe_Validierung");
+  const getInitialValidation = localStorage.getItem("Schusshilfe_validation");
   let initialValidation;
   typeof getInitialValidation === "string"
     ? (initialValidation = JSON.parse(getInitialValidation))
-    : (initialValidation = {distance: false, base: false, windage: false, elevation: false});
+    : (initialValidation = {distance: true, base: true, windage: true, elevation: true}); // init is true because of the init values
 
   const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
   const [weapon, setWeapon] = useState<Weapon>(initialWeapon); // assigns the selected weapon
