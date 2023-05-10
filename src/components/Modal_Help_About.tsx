@@ -41,8 +41,12 @@ export default function Modal_Help_About({
           <span>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
           <a href="mailto:info@mrweber.ch">info@mrweber.ch</a>
         </div>
+<<<<<<< HEAD
         <p className={s.copy}>Icons: <a style={{margin: "0 0.5ch"}} href="https://game-icons.net/" target="_blank">game-icons</a> via <a style={{margin: "0 0.5ch"}} href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a></p>
         <p className={s.copy}>Version Alpha 7.0.0</p>
+=======
+        <p className={s.copy}>Version Alpha 8.0.0</p>
+>>>>>>> 72d61c3 (Versioning)
       </div>
     </>
   );
