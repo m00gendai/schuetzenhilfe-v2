@@ -18,6 +18,11 @@
     color: black;
 }
 
+.links a:active{
+    transform: translate(2px, 2px);
+    box-shadow: 3px 2px 0px 0px black;
+}
+
 .copy {
     position: relative;
     width: 100%;

@@ -4,7 +4,6 @@ import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
 import Modal_Help_About from "./Modal_Help_About";
 import {GiCrosshair, GiUncertainty, GiSherlockHolmes, GiCancel} from "react-icons/gi"
-
 import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps {

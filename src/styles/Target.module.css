@@ -30,5 +30,8 @@
     aspect-ratio: 1/1;
     background: transparent;
     z-index: 200;
-    
+}
+
+.overlay:hover{
+    cursor:crosshair;
 }

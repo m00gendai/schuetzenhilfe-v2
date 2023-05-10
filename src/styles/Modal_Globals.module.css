@@ -108,6 +108,15 @@
     box-shadow: 5px 5px 0px 0px black;
 }
 
+.chapter:hover{
+    cursor: pointer;
+}
+
+.chapter:active{
+    transform: translate(2px, 2px);
+    box-shadow: 3px 2px 0px 0px black;
+}
+
 .chapterTitle{
     margin: 0;
     height: 100%;

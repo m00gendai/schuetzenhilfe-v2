@@ -8,6 +8,7 @@
     flex-direction: row;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    user-select: none;
 }
 
 .button{
