@@ -1,5 +1,5 @@
 import { GiCancel, GiSideswipe } from "react-icons/gi"
-
+import { configs } from "../configs";
 import s from "../styles/Modal_Help_About.module.css";
 import modal from "../styles/Modal_Globals.module.css"
 
@@ -20,10 +20,10 @@ export default function Modal_Help_About({
   return (
     <>
       <div className={modal.buttonRow}>
-        <button className={modal.backButton} title="zurück" onClick={() => setChapter("main")}>
+        <button className={modal.backButton} title="zurück" onClick={() => setTimeout(function(){setChapter("main")},configs.btnTimeout)}>
           <GiSideswipe />
         </button>
-        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
+        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setTimeout(function(){setShowHelp(!showHelp)},configs.btnTimeout)} >
           <GiCancel />
         </button>
       </div>
@@ -42,6 +42,7 @@ export default function Modal_Help_About({
           <span>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
           <a href="mailto:info@mrweber.ch">info@mrweber.ch</a>
         </div>
+        <p className={s.copy}>Icons: <a style={{margin: "0 0.5ch"}} href="https://game-icons.net/" target="_blank">game-icons</a> via <a style={{margin: "0 0.5ch"}} href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a></p>
         <p className={s.copy}>Version Alpha 7.0.0</p>
       </div>
     </>

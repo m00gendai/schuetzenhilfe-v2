@@ -20,7 +20,7 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
       <div className={modal.modal}>
         {chapter === "main" ? (
           <><div className={modal.buttonRow}>
-          <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
+          <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setTimeout(function(){setShowHelp(!showHelp)},200)}>
             <GiCancel />
           </button>
         </div>
