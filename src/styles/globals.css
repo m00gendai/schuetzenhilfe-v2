@@ -38,9 +38,8 @@ main{
 }
 
 .clicked{
-   background: white;
-   color: blue;
-   outline: 2px solid blue;
+    outline: 2px solid blue;
+    border: 2px solid white;
 }
 
 button:hover{
