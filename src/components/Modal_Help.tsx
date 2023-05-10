@@ -4,7 +4,6 @@ import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
 import Modal_Help_About from "./Modal_Help_About";
 import {GiCrosshair, GiUncertainty, GiSherlockHolmes, GiCancel} from "react-icons/gi"
-
 import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps {
@@ -20,7 +19,7 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
       <div className={modal.modal}>
         {chapter === "main" ? (
           <><div className={modal.buttonRow}>
-          <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setTimeout(function(){setShowHelp(!showHelp)},200)}>
+          <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)}>
             <GiCancel />
           </button>
         </div>

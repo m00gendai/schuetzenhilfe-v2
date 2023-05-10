@@ -1,5 +1,4 @@
 import { GiCancel, GiSideswipe } from "react-icons/gi"
-import { configs } from "../configs";
 import s from "../styles/Modal_Help_About.module.css";
 import modal from "../styles/Modal_Globals.module.css"
 
@@ -20,10 +19,10 @@ export default function Modal_Help_About({
   return (
     <>
       <div className={modal.buttonRow}>
-        <button className={modal.backButton} title="zurück" onClick={() => setTimeout(function(){setChapter("main")},configs.btnTimeout)}>
+        <button className={modal.backButton} title="zurück" onClick={() => setChapter("main")}>
           <GiSideswipe />
         </button>
-        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setTimeout(function(){setShowHelp(!showHelp)},configs.btnTimeout)} >
+        <button className={modal.closeButton} title="Hilfemenü schliessen" onClick={() => setShowHelp(!showHelp)} >
           <GiCancel />
         </button>
       </div>
