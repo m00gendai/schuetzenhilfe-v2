@@ -146,7 +146,7 @@ export default function Modal_Options_FactorsSelect({
             <input
             className={s.input}
               type="text"
-              inputMode="numeric"
+              inputMode="decimal"
               value={distance}
               pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
               required
@@ -175,7 +175,7 @@ export default function Modal_Options_FactorsSelect({
             <input
             className={s.input}
               type="text"
-              inputMode="numeric"
+              inputMode="decimal"
               value={base}
               pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
               required
@@ -204,7 +204,7 @@ export default function Modal_Options_FactorsSelect({
             <input
             className={s.input}
               type="text"
-              inputMode="numeric"
+              inputMode="decimal"
               value={windage}
               pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
               required
@@ -233,7 +233,7 @@ export default function Modal_Options_FactorsSelect({
             <input
             className={s.input}
               type="text"
-              inputMode="numeric"
+              inputMode="decimal"
               value={elevation}
               pattern="^(?!0\.*0*$)\d+(\.\d+)?$"
               required

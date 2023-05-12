@@ -2,7 +2,7 @@ import Hit from "./Hit";
 
 import s from "../styles/Target.module.css";
 
-import {useRef} from "react"
+import {useState, useRef} from "react"
 
 interface Target {
   designation: string;
@@ -36,14 +36,37 @@ export default function Target({
 }: targetProps) {
 
   const targetElement = useRef<HTMLElement>(null)
+  const [mouseDown, setMouseDown] = useState<boolean>(false)
+  const [mouseMove, setMouseMove] = useState<boolean>(false)
 
   function getManualHitPosition(event: any) {
+    const offset: number = mouseMove ? 25 : 0
     const width = event.currentTarget.getBoundingClientRect().width;
     const height = event.currentTarget.getBoundingClientRect().height;
     const sizeConstant = width / 100;
-    const xCoordinate = (event.nativeEvent.offsetX / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-    const yCoordinate = (event.nativeEvent.offsetY / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-    setCursorPosition([event.nativeEvent.offsetX, event.nativeEvent.offsetY]);
+    let xCoordinate:number = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+    let yCoordinate:number = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+    if(event.type === "touchstart"){
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
+    }
+    else if(event.type === "touchmove"){
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
+    }
+   else if(event.type=== "click"){
+      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset])
+    }
+    else if(event.type=== "mousemove"){
+      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset])
+    }
+    
     calculateHit([xCoordinate, yCoordinate]);
     return [xCoordinate, yCoordinate];
   }
@@ -61,6 +84,14 @@ export default function Target({
   function assignManualHitPosition(event: any) {
     const manualHitPosition: number[] = getManualHitPosition(event);
     setManualHitPosition(manualHitPosition);
+
+  }
+
+  function assignManualHitPositionDrag(event: any) {
+    if(mouseDown){
+    const manualHitPosition: number[] = getManualHitPosition(event);
+    setManualHitPosition(manualHitPosition);
+    }
   }
 
   if (zoom === 1 && targetElement.current != null) {
@@ -71,6 +102,22 @@ export default function Target({
   }
   if (zoom === 3 && targetElement.current != null) {
     targetElement.current.style.transform = 'scale(4,4) translate(-50%, -50%)';
+  }
+
+  function handleClick(event:any){
+    setMouseMove(false)
+    setMouseDown(false)
+    assignManualHitPosition(event)
+  }
+
+  function handleMouseDown(){
+    setMouseDown(true)
+    setMouseMove(false)
+  }
+
+  function handleMouseMove(event:any){
+    setMouseMove(true)
+    assignManualHitPositionDrag(event)
   }
 
   return (
@@ -91,7 +138,11 @@ export default function Target({
       ) : null}
       <div
         className={s.overlay}
-        onClick={(event: any) => assignManualHitPosition(event)}
+        onClick={(event: any) => handleClick(event)}
+        onTouchStart={()=>handleMouseDown()}
+        onTouchMove={(event:any)=>handleMouseMove(event)}
+        onMouseDown={()=>handleMouseDown()}
+        onMouseMove={(event:any)=>handleMouseMove(event)}
       ></div>
     </section>
     </div>

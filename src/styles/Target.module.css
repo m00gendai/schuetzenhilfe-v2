@@ -30,6 +30,7 @@
     aspect-ratio: 1/1;
     background: transparent;
     z-index: 200;
+    touch-action: none;
 }
 
 .overlay:hover{
