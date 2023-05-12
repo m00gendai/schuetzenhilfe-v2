@@ -44,9 +44,29 @@ export default function Target({
     const width = event.currentTarget.getBoundingClientRect().width;
     const height = event.currentTarget.getBoundingClientRect().height;
     const sizeConstant = width / 100;
-    const xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-    const yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-    setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset]);
+    let xCoordinate:number = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+    let yCoordinate:number = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+    if(event.type === "touchstart"){
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
+    }
+    else if(event.type === "touchmove"){
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
+    }
+   else if(event.type=== "click"){
+      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset])
+    }
+    else if(event.type=== "mousemove"){
+      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset])
+    }
+    
     calculateHit([xCoordinate, yCoordinate]);
     return [xCoordinate, yCoordinate];
   }
@@ -119,8 +139,10 @@ export default function Target({
       <div
         className={s.overlay}
         onClick={(event: any) => handleClick(event)}
+        onTouchStart={()=>handleMouseDown()}
+        onTouchMove={(event:any)=>handleMouseMove(event)}
         onMouseDown={()=>handleMouseDown()}
-        onMouseMove={(event: any)=>handleMouseMove(event)}
+        onMouseMove={(event:any)=>handleMouseMove(event)}
       ></div>
     </section>
     </div>
