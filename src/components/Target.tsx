@@ -40,7 +40,8 @@ export default function Target({
   const [mouseMove, setMouseMove] = useState<boolean>(false)
 
   function getManualHitPosition(event: any) {
-    const offset: number = mouseMove ? 25 : 0
+    const offsetCompensate: number = zoom === 1 ? 1 : zoom === 2 ? 0.5 : 0.25
+    const offset: number = mouseMove ? 50 : 0
     const width = event.currentTarget.getBoundingClientRect().width;
     const height = event.currentTarget.getBoundingClientRect().height;
     const sizeConstant = width / 100;
@@ -54,7 +55,7 @@ export default function Target({
     else if(event.type === "touchmove"){
       xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
       yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate, ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate]);
     }
    else if(event.type=== "click"){
       xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
@@ -64,7 +65,7 @@ export default function Target({
     else if(event.type=== "mousemove"){
       xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
       yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset])
+      setCursorPosition([(event.nativeEvent.offsetX-offset), (event.nativeEvent.offsetY-offset)])
     }
     
     calculateHit([xCoordinate, yCoordinate]);
