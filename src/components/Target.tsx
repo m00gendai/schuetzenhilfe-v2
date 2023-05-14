@@ -53,8 +53,8 @@ export default function Target({
       setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
     }
     else if(event.type === "touchmove"){
-      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
       setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate, ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate]);
     }
    else if(event.type=== "click"){
