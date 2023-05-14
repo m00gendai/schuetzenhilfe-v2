@@ -3,7 +3,7 @@ import Hit from "./Hit";
 import s from "../styles/Target.module.css";
 
 import {useState, useRef} from "react"
-import {score300mA_5} from "../utils/scoreCounters"
+import {score300mA_5, score25mRapid} from "../utils/scoreCounters"
 
 interface Target {
   designation: string;
@@ -113,7 +113,7 @@ export default function Target({
     );
     const hit = 100 - distToCenter;
     setCalculatedHitPosition(hit);
-    console.log(score300mA_5(hit))
+    console.log(score25mRapid(hit))
   }
 
   function assignManualHitPosition(event: any) {
