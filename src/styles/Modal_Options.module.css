@@ -98,10 +98,38 @@
     padding: 0.5rem;
     font-size: 1rem;
     font-family: "Arial";
+    user-select: none;
 }
 
 .title:hover{
     cursor: pointer;
+}
+
+.factorDetails{
+    position: relative;
+    width: 90%;
+    margin: 0;
+    font-size: 1rem;
+    font-family: arial;
+}
+
+.factorTitle{
+    position: relative;
+    width: 90%;
+    margin: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    font-size: 1rem;
+    font-family: "Arial";
+    user-select: none;
+    font-weight: bolder;
+}
+
+.factorTitle:hover{
+    cursor: pointer;
+}
+
+.factorTitle::marker{
+    content: "";
 }
 
 .itemGrid{
