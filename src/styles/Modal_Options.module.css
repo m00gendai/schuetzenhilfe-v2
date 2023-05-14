@@ -15,7 +15,7 @@
     align-items: center;
     align-content: center;
     padding: 0;
-    aspect-ratio: 21/10;
+    aspect-ratio: 16/10;
     background: blue;
     border: none;
     outline: none;
@@ -196,3 +196,20 @@
     flex-grow: 1;
 }
 
+.toggle{
+    width: 20%;
+}
+
+.toggleFull{
+    width: 80%;
+}
+
+.optionLeft{
+    width: 40%;
+    text-align: left;
+}
+
+.optionRight{
+    width: 40%;
+    text-align: right;
+}

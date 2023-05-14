@@ -31,7 +31,8 @@ interface Validation{
 
 interface Settings{
   sightMode: number;
-  handMode: number
+  handMode: number;
+  offset: number;
 }
 
 function App() {
@@ -100,7 +101,7 @@ function App() {
   let initialSettings;
   typeof getInitialSettings === "string"
     ? (initialSettings = JSON.parse(getInitialSettings))
-    : (initialSettings = {sightMode: 0, handMode: 0})
+    : (initialSettings = {sightMode: 0, handMode: 0, offset: 50})
 
 
   const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
@@ -120,7 +121,7 @@ function App() {
   const [reticle, setReticle] = useState<number>(1) // Sets hit on target variant
   const [validated, setValidated] = useState<Validation>(initialValidation) // Factor Selection validation
   const [settings, setSettings] = useState<Settings>(initialSettings) // Settings object
-console.log(settings)
+
   return (
     <main>
       <Target
@@ -145,7 +146,6 @@ console.log(settings)
         setZoom={setZoom}
         reticle={reticle}
         setReticle={setReticle}
-
       />
       <Controller
         weapon={weapon}

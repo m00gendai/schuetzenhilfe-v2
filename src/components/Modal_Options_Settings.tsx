@@ -4,7 +4,8 @@ import { GiInfo } from "react-icons/gi"
 
 interface Settings{
     sightMode: number;
-    handMode: number
+    handMode: number;
+    offset: number;
   }
 
 interface ModalProps{
@@ -24,6 +25,11 @@ export default function Modal_Options_Settings({settings, setSettings}:ModalProp
         localStorage.setItem("Schusshilfe_settings", JSON.stringify({...settings, handMode: parseInt(event?.currentTarget.value)}));
     }
 
+    function handleOffset(event:any){
+        setSettings({...settings, offset: parseInt(event?.currentTarget.value)})
+        localStorage.setItem("Schusshilfe_settings", JSON.stringify({...settings, offset: parseInt(event?.currentTarget.value)}));
+    }
+
     return(
         <div className={modal.content}>
             <div className={s.item}>
@@ -35,37 +41,38 @@ export default function Modal_Options_Settings({settings, setSettings}:ModalProp
                     </p>
                 </details>
                 <div className={s.wrapper}>
-                    <p>Bei ...</p>
-                    <input type="range" min={0} max={1} value={settings.sightMode} onChange={(event:any)=>handleSightMode(event)}/>
-                    <p>Nach ...</p>
+                    <p className={s.optionLeft}>Bei ...</p>
+                    <input className={s.toggle} type="range" min={0} max={1} value={settings.sightMode} onChange={(event:any)=>handleSightMode(event)}/>
+                    <p className={s.optionRight}>Nach ...</p>
                 </div>
             </div>
-            {/**
+            
             <div className={s.item}>
                 <details className={s.factorDetails}>
                     <summary className={s.factorTitle}>Trefferpunktversatz <GiInfo /></summary>
                     <p>
                         Steuert den Abstand zwischen Finger und Trefferanzeige während dem Wischen.
-                        Standard ist 50.
+                        Standard ist 50, Minimum 0, Maximum 100, Verstellung in 10er-Schritten.
                     </p>
                 </details>
                 <div className={s.wrapper}>
-                    <input type="text" inputMode="numeric" className={s.input} placeholder="50"/>
+                <input type="range" name="offset" className={s.toggleFull} min={0} max={100} step={10} value={settings.offset} onChange={(event:any)=>handleOffset(event)}/>
+                <label style={{width: "10%"}} htmlFor="offset">{settings.offset}</label>
                     </div>
             </div>
-            */}
+            
             <div className={s.item}>
                 <details className={s.factorDetails}>
                     <summary className={s.factorTitle}>Handmodus <GiInfo /></summary>
                     <p>
-                        Steuert die Anordnung der Optionsknöpfe sowie den Trefferpunktversatz 
+                        Steuert die Richtung des Trefferpunktversatzes
                         (nach links bei Rechtshändern und umgekehrt).
                     </p>
                 </details>
                 <div className={s.wrapper}>
-                    <p>Rechtshänder</p>
-                    <input type="range" min={0} max={1} value={settings.handMode} onChange={(event:any)=>handleHandMode(event)}/>
-                    <p>Linkshänder</p>
+                    <p className={s.optionLeft}>Rechtshänder</p>
+                    <input type="range" className={s.toggle} min={0} max={1} value={settings.handMode} onChange={(event:any)=>handleHandMode(event)}/>
+                    <p className={s.optionRight}>Linkshänder</p>
                 </div>
             </div>
         </div>

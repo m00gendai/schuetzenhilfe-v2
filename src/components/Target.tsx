@@ -13,7 +13,8 @@ interface Target {
 
 interface Settings{
   sightMode: number;
-  handMode: number
+  handMode: number;
+  offset: number;
 }
 
 interface targetProps {
@@ -48,7 +49,7 @@ export default function Target({
 
   function getManualHitPosition(event: any) {
     const offsetCompensate: number = zoom === 1 ? 1 : zoom === 2 ? 0.5 : 0.25
-    const offset: number = mouseMove ? 50 : 0
+    const offset: number = mouseMove ? settings.offset : 0
     const width = event.currentTarget.getBoundingClientRect().width;
     const height = event.currentTarget.getBoundingClientRect().height;
     const sizeConstant = width / 100;
