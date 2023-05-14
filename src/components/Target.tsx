@@ -11,6 +11,12 @@ interface Target {
   type: string;
 }
 
+interface Settings{
+  sightMode: number;
+  handMode: number;
+  offset: number;
+}
+
 interface targetProps {
   target: Target;
   manualHitPosition: number[];
@@ -21,6 +27,7 @@ interface targetProps {
   setCursorPosition: React.Dispatch<React.SetStateAction<number[]>>;
   zoom: number;
   reticle: number;
+  settings: Settings;
 }
 
 export default function Target({
@@ -33,6 +40,7 @@ export default function Target({
   setCursorPosition,
   zoom,
   reticle,
+  settings,
 }: targetProps) {
 
   const targetElement = useRef<HTMLElement>(null)
@@ -41,31 +49,55 @@ export default function Target({
 
   function getManualHitPosition(event: any) {
     const offsetCompensate: number = zoom === 1 ? 1 : zoom === 2 ? 0.5 : 0.25
-    const offset: number = mouseMove ? 50 : 0
+    const offset: number = mouseMove ? settings.offset : 0
     const width = event.currentTarget.getBoundingClientRect().width;
     const height = event.currentTarget.getBoundingClientRect().height;
     const sizeConstant = width / 100;
     let xCoordinate:number = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
     let yCoordinate:number = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
     if(event.type === "touchstart"){
-      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      settings.handMode === 0 ?
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
+      :
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)+offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
       yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)]);
+      settings.handMode === 0 ?
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)])
+      :
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)+offset), ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)])
     }
     else if(event.type === "touchmove"){
-      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      settings.handMode === 0 ?
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
+      :
+      xCoordinate = (((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)+offset)*offsetCompensate / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
       yCoordinate = (((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate, ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate]);
+      settings.handMode === 0 ?
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)-offset)*offsetCompensate, ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate])
+      :
+      setCursorPosition([((event.changedTouches[0].clientX-event.currentTarget.getBoundingClientRect().left)+offset)*offsetCompensate, ((event.changedTouches[0].clientY-event.currentTarget.getBoundingClientRect().top)-offset)*offsetCompensate]);
     }
    else if(event.type=== "click"){
-      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
-      setCursorPosition([event.nativeEvent.offsetX-offset, event.nativeEvent.offsetY-offset])
+    settings.handMode === 0 ?
+    xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
+    :
+    xCoordinate = ((event.nativeEvent.offsetX+offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
+    yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+    settings.handMode === 0 ?
+    setCursorPosition([(event.nativeEvent.offsetX-offset), (event.nativeEvent.offsetY-offset)])
+    :
+    setCursorPosition([(event.nativeEvent.offsetX+offset), (event.nativeEvent.offsetY-offset)])
     }
     else if(event.type=== "mousemove"){
-      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      settings.handMode === 0 ?
+      xCoordinate = ((event.nativeEvent.offsetX-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
+      :
+      xCoordinate = ((event.nativeEvent.offsetX+offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4)
       yCoordinate = ((event.nativeEvent.offsetY-offset) / sizeConstant) * 2*(zoom === 1 ? 1 : zoom === 2 ? 2 : 4);
+      settings.handMode === 0 ?
       setCursorPosition([(event.nativeEvent.offsetX-offset), (event.nativeEvent.offsetY-offset)])
+      :
+      setCursorPosition([(event.nativeEvent.offsetX+offset), (event.nativeEvent.offsetY-offset)])
     }
     
     calculateHit([xCoordinate, yCoordinate]);
