@@ -35,6 +35,7 @@ interface Validation{
 
 interface Settings{
   sightMode: number;
+  handMode: number
 }
 
 interface modalProps {

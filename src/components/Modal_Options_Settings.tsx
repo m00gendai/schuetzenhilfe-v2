@@ -4,7 +4,8 @@ import { GiInfo } from "react-icons/gi"
 
 interface Settings{
     sightMode: number;
-}
+    handMode: number
+  }
 
 interface ModalProps{
     settings: Settings;
@@ -16,6 +17,11 @@ export default function Modal_Options_Settings({settings, setSettings}:ModalProp
     function handleSightMode(event:any){
         setSettings({...settings, sightMode: parseInt(event?.currentTarget.value)})
         localStorage.setItem("Schusshilfe_settings", JSON.stringify({...settings, sightMode: parseInt(event?.currentTarget.value)}));
+    }
+
+    function handleHandMode(event:any){
+        setSettings({...settings, handMode: parseInt(event?.currentTarget.value)})
+        localStorage.setItem("Schusshilfe_settings", JSON.stringify({...settings, handMode: parseInt(event?.currentTarget.value)}));
     }
 
     return(
@@ -47,6 +53,7 @@ export default function Modal_Options_Settings({settings, setSettings}:ModalProp
                     <input type="text" inputMode="numeric" className={s.input} placeholder="50"/>
                     </div>
             </div>
+            */}
             <div className={s.item}>
                 <details className={s.factorDetails}>
                     <summary className={s.factorTitle}>Handmodus <GiInfo /></summary>
@@ -57,11 +64,10 @@ export default function Modal_Options_Settings({settings, setSettings}:ModalProp
                 </details>
                 <div className={s.wrapper}>
                     <p>Rechtshänder</p>
-                    <input type="range" min={0} max={1}/>
+                    <input type="range" min={0} max={1} value={settings.handMode} onChange={(event:any)=>handleHandMode(event)}/>
                     <p>Linkshänder</p>
                 </div>
             </div>
-    */}
         </div>
     )
 }

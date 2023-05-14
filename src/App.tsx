@@ -31,6 +31,7 @@ interface Validation{
 
 interface Settings{
   sightMode: number;
+  handMode: number
 }
 
 function App() {
@@ -99,7 +100,7 @@ function App() {
   let initialSettings;
   typeof getInitialSettings === "string"
     ? (initialSettings = JSON.parse(getInitialSettings))
-    : (initialSettings = {sightMode: 0})
+    : (initialSettings = {sightMode: 0, handMode: 0})
 
 
   const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
@@ -132,6 +133,7 @@ console.log(settings)
         setCursorPosition={setCursorPosition}
         zoom={zoom}
         reticle={reticle}
+        settings={settings}
       />
       <Screen
         hit={calculatedHitPosition}
@@ -143,6 +145,7 @@ console.log(settings)
         setZoom={setZoom}
         reticle={reticle}
         setReticle={setReticle}
+
       />
       <Controller
         weapon={weapon}
