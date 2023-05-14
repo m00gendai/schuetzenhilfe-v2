@@ -3,7 +3,8 @@ import { useState } from "react";
 import Modal_Help_Sights from "./Modal_Help_Sights";
 import Modal_Help_Mode_Controller from "./Modal_Help_Mode_Controller";
 import Modal_Help_About from "./Modal_Help_About";
-import {GiCrosshair, GiUncertainty, GiSherlockHolmes, GiCancel} from "react-icons/gi"
+import Modal_Help_Tutorial from "./Modal_Help_Tutorial"
+import {GiRead, GiCrosshair, GiUncertainty, GiSherlockHolmes, GiCancel} from "react-icons/gi"
 import modal from "../styles/Modal_Globals.module.css"
 
 interface modalProps {
@@ -25,6 +26,12 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
         </div>
             <div className={modal.content}>
               <h1 className={modal.title}>Hilfemenü</h1>
+              <div 
+                className={modal.chapter} onClick={() => setChapter("tutorial")}
+              >
+                <p className={modal.chapterTitle}>Anleitung</p>
+                <p className={modal.chapterIcon}><GiRead /></p>
+              </div>
               <div
                 className={modal.chapter}
                 onClick={() => setChapter("mode_controller")}
@@ -60,7 +67,12 @@ export default function Modal_Help({ showHelp, setShowHelp }: modalProps) {
             setShowHelp={setShowHelp}
             setChapter={setChapter}
           />
-        ) : null}
+        )  : chapter === "tutorial" ? (
+          <Modal_Help_Tutorial
+            showHelp={showHelp}
+            setShowHelp={setShowHelp}
+            setChapter={setChapter}
+          />): null}
       </div>
     </aside>
   );
