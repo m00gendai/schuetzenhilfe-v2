@@ -31,8 +31,8 @@ export default function Modal_Help_About({
         <div className={s.links}>
           <a href="https://paypal.me/schussfreude?country.x=CH&locale.x=de_DE" target="_blank">PayPal</a>
           <a href="https://www.patreon.com/schussfreude" target="_blank">Patreon</a>
-          <a href="https://github.com/m00gendai/schuetzenhilfe-v2" target="_blank">GitHub</a>
-          <a href="https://trello.com/b/7QbKeNiE/schusshilfe" target="_blank">Trello</a>
+          <a href="https://github.com/m00gendai/schuetzenhilfe-v2" target="_blank">Quellcode</a>
+          <a href="https://trello.com/b/7QbKeNiE/schusshilfe" target="_blank">Entwickungsstatus</a>
           <a href="https://ch.linkedin.com/in/marcel-weber-3a05a61bb" target="_blank">LinkedIn</a>
           <a href="https://www.schussfreude.ch" target="_blank">schussfreude.ch</a>
           <a href="https://www.waffenforum.ch" target="_blank">waffenforum.ch</a>
@@ -41,7 +41,7 @@ export default function Modal_Help_About({
           <span>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
           <a href="mailto:info@mrweber.ch">info@mrweber.ch</a>
         </div>
-        <p className={s.copy}>Version Alpha 8.0.0</p>
+        <p className={s.copy}>Version Alpha 10.0.0</p>
       </div>
     </>
   );
