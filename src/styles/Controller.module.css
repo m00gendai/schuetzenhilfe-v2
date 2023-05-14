@@ -12,13 +12,18 @@
 }
 
 .title{
-    padding: 0;
+    padding: 0.5rem 0;
     margin: 1rem;
     position: relative;
     width: 100%;
     font-size: 1rem;
     text-align: center;
     white-space: pre;
+    border: 1px solid black;
+}
+
+.title:hover{
+    cursor: pointer;
 }
 
 .content{

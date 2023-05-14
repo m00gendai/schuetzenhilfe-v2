@@ -136,6 +136,8 @@ function App() {
         target={target}
         distance={distance}
         manualHitPosition={manualHitPosition}
+        showOptions={showOptions}
+        setShowOptions={setShowOptions}
       />
       {showOptions ? (
         <Modal_Options

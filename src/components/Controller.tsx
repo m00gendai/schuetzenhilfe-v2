@@ -19,6 +19,8 @@ interface controllerProps {
   target: Target;
   distance: number;
   manualHitPosition: number[];
+  showOptions: boolean;
+  setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Controller({
@@ -26,6 +28,8 @@ export default function Controller({
   target,
   distance,
   manualHitPosition,
+  showOptions,
+  setShowOptions
 }: controllerProps) {
   const distanceFactor: number = distance / weapon.base;
 
@@ -42,6 +46,7 @@ export default function Controller({
     <section className={s.container}>
       <h1
         className={s.title}
+        onClick={()=>setShowOptions(!showOptions)}
       >{`${prefix[1]}\n${distance}m\n${target.name}`}</h1>
       {manualHitPosition[0] === 999 ? (
         <div className={s.placeholder}>
