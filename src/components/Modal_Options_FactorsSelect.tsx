@@ -142,7 +142,7 @@ export default function Modal_Options_FactorsSelect({
         <div className={modal.content}>
           <div className={s.item}>
             <details className={s.factorDetails}>
-              <summary className={s.factorTitle}>Zieldistanz in Meter<GiInfo style={{margin: "0 0 0 1rem"}}/></summary>
+              <summary className={s.factorTitle}>Zieldistanz in Meter <GiInfo /></summary>
                 <p>Distanz zwischen Schütze und Ziel in Meter.</p>
               </details>
             <div className={s.wrapper}>
@@ -174,7 +174,7 @@ export default function Modal_Options_FactorsSelect({
           </div>
           <div className={s.item}>
           <details className={s.factorDetails}>
-              <summary className={s.factorTitle}>Referenzdistanz in Meter<GiInfo style={{margin: "0 0 0 1rem"}}/></summary>
+              <summary className={s.factorTitle}>Referenzdistanz in Meter <GiInfo /></summary>
               <p><strong>Hierfür muss in der Waffenauswahl "Individuelle Verstellschritte" ausgewählt sein!</strong></p>
                 <p>Die vom Hersteller angegebende Distanz, auf welche die Waffe/das Visier kalibriert ist.</p>
                 <p>Wenn in der Anleitung bspw steht "Höhenkorrektur 1cm auf 25m", so ist in diesem Feld 25m einzugeben.</p>
@@ -208,7 +208,7 @@ export default function Modal_Options_FactorsSelect({
           </div>
           <div className={s.item}>
           <details className={s.factorDetails}>
-              <summary className={s.factorTitle}>Individueller Verstellschritt Seite in Zentimeter<GiInfo style={{margin: "0 0 0 1rem"}}/></summary>
+              <summary className={s.factorTitle}>Individueller Verstellschritt Seite in Zentimeter <GiInfo /></summary>
               <p><strong>Hierfür muss in der Waffenauswahl "Individuelle Verstellschritte" ausgewählt sein!</strong></p>
               <p>Der vom Hersteller angegebene Verstellschritt, auf welchen die Waffe/das Visier kalibriert ist.</p>
                 <p>Wenn in der Anleitung bspw steht "Seitenkorrektur 1cm auf 25m", so ist in diesem Feld 1 einzugeben.</p>
@@ -242,7 +242,7 @@ export default function Modal_Options_FactorsSelect({
           </div>
           <div className={s.item}>
           <details className={s.factorDetails}>
-              <summary className={s.factorTitle}>Individueller Verstellschritt Höhe in Zentimeter<GiInfo style={{margin: "0 0 0 1rem"}}/></summary>
+              <summary className={s.factorTitle}>Individueller Verstellschritt Höhe in Zentimeter <GiInfo /></summary>
               <p><strong>Hierfür muss in der Waffenauswahl "Individuelle Verstellschritte" ausgewählt sein!</strong></p>
               <p>Der vom Hersteller angegebene Verstellschritt, auf welchen die Waffe/das Visier kalibriert ist.</p>
                 <p>Wenn in der Anleitung bspw steht "Höhenkorrektur 1cm auf 25m", so ist in diesem Feld 1 einzugeben.</p>
