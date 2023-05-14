@@ -14,6 +14,10 @@ interface Weapon {
   base: number;
 }
 
+interface Settings{
+  sightMode: number;
+}
+
 interface controllerProps {
   weapon: Weapon;
   target: Target;
@@ -21,6 +25,7 @@ interface controllerProps {
   manualHitPosition: number[];
   showOptions: boolean;
   setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
+  settings: Settings;
 }
 
 export default function Controller({
@@ -29,7 +34,8 @@ export default function Controller({
   distance,
   manualHitPosition,
   showOptions,
-  setShowOptions
+  setShowOptions,
+  settings
 }: controllerProps) {
   const distanceFactor: number = distance / weapon.base;
 
@@ -57,9 +63,9 @@ export default function Controller({
           <div className={s.display}>
             <div className={s.direction}>
               {windageAdjust > 0
-                ? "bei links"
+                ? `${settings.sightMode === 0 ? "bei links" : "nach rechts"}`
                 : windageAdjust < 0
-                ? "Bei rechts"
+                ? `${settings.sightMode === 0 ? "bei rechts" : "nach links"}`
                 : "Mittig!"}
             </div>
             <div className={s.amount}>{Math.abs(windageAdjust)}</div>
@@ -67,9 +73,9 @@ export default function Controller({
           <div className={s.display}>
             <div className={s.direction}>
               {elevationAdjust > 0
-                ? "bei hoch"
+                ? `${settings.sightMode === 0 ? "bei hoch" : "nach unten"}`
                 : elevationAdjust < 0
-                ? "Bei tief"
+                ? `${settings.sightMode === 0 ? "bei tief" : "nach oben"}`
                 : "Mittig!"}
             </div>
             <div className={s.amount}>{Math.abs(elevationAdjust)}</div>

@@ -136,3 +136,21 @@
     align-items: center;
     font-size: 2rem;
 }
+
+.optionContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.toggleContainer{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+
+.toggle1{
+    text-align: left;
+}
+
+.toggle2{
+    text-align: right;
+}

@@ -29,6 +29,10 @@ interface Validation{
   elevation: boolean;
 }
 
+interface Settings{
+  sightMode: number;
+}
+
 function App() {
 
   // GET TARGET FROM LOCALSTORAGE OR SET DEFAULT
@@ -90,6 +94,14 @@ function App() {
     ? (initialValidation = JSON.parse(getInitialValidation))
     : (initialValidation = {distance: true, base: true, windage: true, elevation: true}); // init is true because of the init values
 
+  // GET SETTINGS FROM LOCALSTORAGE OR SET DEFAULT
+  const getInitialSettings = localStorage.getItem("Schusshilfe_settings");
+  let initialSettings;
+  typeof getInitialSettings === "string"
+    ? (initialSettings = JSON.parse(getInitialSettings))
+    : (initialSettings = {sightMode: 0})
+
+
   const [target, setTarget] = useState<Target>(initialTarget); // assigns the selected target
   const [weapon, setWeapon] = useState<Weapon>(initialWeapon); // assigns the selected weapon
   const [distance, setDistance] = useState<number>(initialDistance); // assigns the selected distance
@@ -106,7 +118,8 @@ function App() {
   const [zoom, setZoom] = useState<number>(1) // Sets target zoom in steps
   const [reticle, setReticle] = useState<number>(1) // Sets hit on target variant
   const [validated, setValidated] = useState<Validation>(initialValidation) // Factor Selection validation
-
+  const [settings, setSettings] = useState<Settings>(initialSettings) // Settings object
+console.log(settings)
   return (
     <main>
       <Target
@@ -138,6 +151,7 @@ function App() {
         manualHitPosition={manualHitPosition}
         showOptions={showOptions}
         setShowOptions={setShowOptions}
+        settings={settings}
       />
       {showOptions ? (
         <Modal_Options
@@ -157,6 +171,8 @@ function App() {
           setBase={setBase}
           validated={validated}
           setValidated={setValidated}
+          settings={settings}
+          setSettings={setSettings}
         />
       ) : null}
       {showHelp ? (
