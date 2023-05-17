@@ -17,6 +17,7 @@ export function score300mA_5(hit:number){
     if(hit > 80){
         return 5
     }
+    return hit
 }
 
 export function score25mRapid(hit:number){
@@ -41,6 +42,7 @@ export function score25mRapid(hit:number){
     if(hit > 80){
         return 10
     }
+    return hit
 }
 
 export function score2550mPrecision(hit:number){
@@ -77,6 +79,7 @@ export function score2550mPrecision(hit:number){
     if(hit >=91){
         return 10
     }
+    return hit
 }
 
 export function score50mP_4(hit:number){
@@ -95,6 +98,7 @@ export function score50mP_4(hit:number){
     if(hit > 80){
         return 4
     }
+    return hit
 }
 
 export function score50mRifle(hit:number){
@@ -131,6 +135,7 @@ export function score50mRifle(hit:number){
     if(hit >= 95){
         return 10
     }
+    return hit
 }
 
 export function score10mAirRifle(hit:number){
@@ -167,6 +172,7 @@ export function score10mAirRifle(hit:number){
     if(hit >= 99){
         return 10
     }
+    return hit
 }
 
 export function score10mAirPistol(hit:number){
@@ -203,4 +209,5 @@ export function score10mAirPistol(hit:number){
     if(hit > 93){
         return 10
     }
+    return hit
 }
