@@ -27,14 +27,21 @@
     align-items: center;
 }
 
-.score {
+.scoreWrapper {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     background: white;
     color: black;
     font-family: monospace;
     height: 100%;
     font-size: 1.25rem;
+}
+
+.score{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }

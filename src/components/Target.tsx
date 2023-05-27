@@ -167,6 +167,7 @@ export default function Target({
           x={cursorPosition[0]}
           zoom={zoom}
           reticle={reticle}
+          target={target}
         />
       ) : null}
       <div

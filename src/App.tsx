@@ -146,6 +146,7 @@ function App() {
         setZoom={setZoom}
         reticle={reticle}
         setReticle={setReticle}
+        target={target}
       />
       <Controller
         weapon={weapon}
