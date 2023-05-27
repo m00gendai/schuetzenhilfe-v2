@@ -2,7 +2,7 @@ import Hit from "./Hit";
 
 import s from "../styles/Target.module.css";
 
-import {useState, useRef} from "react"
+import {useState, useRef, useEffect} from "react"
 
 interface Target {
   designation: string;
@@ -46,6 +46,14 @@ export default function Target({
   const targetElement = useRef<HTMLElement>(null)
   const [mouseDown, setMouseDown] = useState<boolean>(false)
   const [mouseMove, setMouseMove] = useState<boolean>(false)
+  const [multi, setMulti] = useState<number[][]>([[999,999],[999,999],[999,999]])
+
+  useEffect(()=>{
+    multi.push([cursorPosition[0],cursorPosition[1],calculatedHitPosition])
+    multi.shift()
+  },[cursorPosition])
+
+  console.log(multi)
 
   function getManualHitPosition(event: any) {
     const offsetCompensate: number = zoom === 1 ? 1 : zoom === 2 ? 0.5 : 0.25
@@ -161,15 +169,24 @@ export default function Target({
       ref={targetElement}
     >
       {calculatedHitPosition ? (
-        <Hit
-          score={calculatedHitPosition}
-          y={cursorPosition[1]}
-          x={cursorPosition[0]}
+        multi.map(hit =>{
+        return <Hit
+          score={hit[2]}
+          y={hit[1]}
+          x={hit[0]}
+          zoom={zoom}
+          reticle={reticle}
+          target={target}
+        />})
+      ) : null}
+      <Hit
+          score={0}
+          y={((multi[0][1] + multi[1][1] + multi[2][1])/3)}
+          x={((multi[0][0] + multi[1][0] + multi[2][0])/3)}
           zoom={zoom}
           reticle={reticle}
           target={target}
         />
-      ) : null}
       <div
         className={s.overlay}
         onClick={(event: any) => handleClick(event)}
