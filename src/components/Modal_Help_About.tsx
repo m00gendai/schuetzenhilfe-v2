@@ -38,10 +38,13 @@ export default function Modal_Help_About({
           <a href="https://www.waffenforum.ch" target="_blank">waffenforum.ch</a>
         </div>
         <div className={s.copy}>
-          <span>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
+          <span style={{width: "100%"}}>{`© 2022-${currentYear} Marcel Weber / schussfreude.ch`}</span>
           <a href="mailto:info@mrweber.ch">info@mrweber.ch</a>
+          <hr style={{width: "100%"}}></hr>
+          <span style={{width: "100%"}}>Scheibenbilder mit freundlicher Genehmigung von Kuert Druck AG</span>
+          <a href="https://www.kuert.ch/" target="_blank">https://www.kuert.ch/</a>
         </div>
-        <p className={s.copy}>Version Alpha 11.0.0</p>
+        <p className={s.copy}>Version Alpha 11.1.0</p>
       </div>
     </>
   );
